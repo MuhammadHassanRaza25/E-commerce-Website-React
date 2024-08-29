@@ -1,0 +1,63 @@
+.navbar{
+  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
+}
+.nav-heading{
+  color: whitesmoke;
+}
+
+input:focus::placeholder{
+  color: #01c7f3;
+  transition: all 0.5s;
+  padding-left: 3%;
+}
+option{
+  color: #00d2ff;
+}
+
+.heading{
+   color: #00d2ff;
+   font-weight: bold;
+   text-align: center;
+   font-size: 35px;
+   margin-top: 8%;
+}
+/* cards styling start */
+.card{
+  margin-top: 2%;
+  width: 380px;
+}
+.card:hover{
+  border-color: #00d2ff;
+  transition: all 0.5s;
+}
+.image{
+  display: flex;
+  justify-content: center;
+}
+.image img{
+  width: 310px;
+}
+.desc{
+  height: 12vh;
+  overflow: scroll;
+  margin-top: 5%;
+}
+.desc::-webkit-scrollbar{
+  display: none;
+}
+.btn{
+  width: 100%;
+  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
+  transition: all 0.5s;
+}
+.btn:hover{
+  box-shadow: 0px 0px 5px #3a47d5;
+  transition: all 0.5s;
+}
+/* cards styling end */
+
+@media(max-width:600px){
+  .navInputs{
+    margin-top: 5%;
+  }
+}
