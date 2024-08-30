@@ -6,6 +6,9 @@ import Cards from './components/Cards'
 function App() {
   const [products, setProducts] = useState([])
   const [category, setCategory] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState("")
+  const [searchProducts, setSeachProducts] = useState("")
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const fetchProducts = ()=>{
       fetch('https://dummyjson.com/products')
@@ -18,16 +21,52 @@ function App() {
       });
     
     }
+    //checking data
+    // {products.map((value)=>{
+    //   console.log(value);
+    // })
+    // }
 
+// call api function //
 useEffect(()=>{
   fetchProducts()
 },[])
 
-//checking data
-// {products.map((value)=>{
-//   console.log(value);
-// })
-// }
+
+// Products Filter Functionality ⬇ //
+useEffect(() => {
+  let filtered = products;
+  if (selectedCategory) {
+    filtered = filtered.filter((productData) =>(
+      productData.category === selectedCategory
+    ));
+  }
+  if (searchProducts) {
+    filtered = filtered.filter((productData) =>(
+      productData.title.toLowerCase().includes(searchProducts.toLowerCase())
+    ));
+  }
+  setFilteredProducts(filtered);
+}, [selectedCategory, searchProducts, products]);
+
+//Summary: Simple hamny (filtered varible) main products leliye phir unko filter() karke products ka data lelia.
+// then if ki conditions main ushi (filtered varible) ko update kia or conditions lagayin.
+// at the last setFilteredProducts(filtered); means (filtered varible) ko useState main push krdia. then ma lagake cards ka data show krdia.
+
+// Products Filter Functionality ⬆ //
+
+
+// ⬇ Functions For get values of search input & select.⬇ //
+const searchProductsFunc = (e)=>{
+   //console.log(e.target.value);  //get search input value.
+   setSeachProducts(e.target.value)
+}
+
+const selectedCategoryFunc = (e)=>{
+  // console.log(e.target.value);  //get select value.
+  setSelectedCategory(e.target.value)
+}
+// ⬆ Functions For get values of search input & select.⬆ //
 
   return (
     <>
@@ -40,11 +79,11 @@ useEffect(()=>{
     <div className="navInputs flex justify-end gap-5 text-sm lg:flex-grow">
       
       <input className="font-semibold p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg placeholder:text-gray-500" 
-       type="text" placeholder="Search Products"/>
+       type="text" value={searchProducts} onChange={searchProductsFunc} placeholder="Search Products"/>
 
-      <select className="font-semibold text-gray-500 p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg">
+      <select value={selectedCategory} onChange={selectedCategoryFunc} className="font-semibold text-gray-500 p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg">
         <option className="font-semibold" value="Select Category" disabled selected>Select Category</option>
-        <option className="font-semibold" value="All Products">All Products</option>
+        <option className="font-semibold" value="">All Products</option>
         {category.map((value, index) => (    //show category using map.
 						<option value={value} key={index}>{value[0].toUpperCase() + value.slice(1)}</option> //First Letter UpperCase kia h.
 					))}         
@@ -59,11 +98,11 @@ useEffect(()=>{
  <h1 className='heading'><span className='text-black'>Latest</span> Products</h1>
  
  <div className='flex flex-wrap justify-evenly mb-32 mt-7'>
-  {products.map((value)=>(
+  {filteredProducts.map((value)=>(
      <Cards
      category={value.category}
      key={value.id}
-     images={value.images}
+     images={value.thumbnail}
      description={value.description}
      price={value.price}
      title={value.title}

@@ -1,3 +1,12 @@
+::-webkit-scrollbar{
+  width: 11px;
+  height: 20px;
+  background-color: rgb(246, 246, 246);
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
+}
+
 .navbar{
   background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
 }
@@ -25,17 +34,25 @@ option{
 .card{
   margin-top: 2%;
   width: 380px;
+  height: 93vh;
 }
 .card:hover{
   border-color: #00d2ff;
   transition: all 0.5s;
+}
+.cardTitle{
+  height: 5vh;
+  overflow: scroll;
+}
+.cardTitle::-webkit-scrollbar{
+  display: none;
 }
 .image{
   display: flex;
   justify-content: center;
 }
 .image img{
-  width: 310px;
+  width: 300px;
 }
 .desc{
   height: 12vh;

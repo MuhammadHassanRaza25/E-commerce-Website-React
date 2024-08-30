@@ -6,7 +6,7 @@ function Cards(props){
         <img className="p-8 rounded-t-lg" src={props.images} alt="product image" />
         </div>
     <div className="px-5 pb-5">
-        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.title}</h5>
+        <h5 className="cardTitle text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.title}</h5>
         <div className="desc">
             {props.description}
         </div>
