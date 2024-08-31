@@ -78,3 +78,17 @@ option{
     margin-top: 5%;
   }
 }
+@media(max-width:430px){
+  .navInputs{
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .navInputs input{
+    width: 100%;
+  }
+  .navInputs select{
+    width: 100%;
+  }
+}
