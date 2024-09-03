@@ -34,7 +34,7 @@ option{
 .card{
   margin-top: 2%;
   width: 380px;
-  height: 93vh;
+  height: 89.3vh;
 }
 .card:hover{
   border-color: #00d2ff;
@@ -52,7 +52,7 @@ option{
   justify-content: center;
 }
 .image img{
-  width: 300px;
+  width: 280px;
 }
 .desc{
   height: 12vh;

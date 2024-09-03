@@ -76,7 +76,7 @@ const selectedCategoryFunc = (e)=>{
       <span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store</span>
    </div>
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div className="navInputs flex justify-end gap-5 text-sm lg:flex-grow">
+    <div className="navInputs flex items-center justify-end gap-5 text-sm lg:flex-grow">
       
       <input className="font-semibold p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg placeholder:text-gray-500" 
        type="text" value={searchProducts} onChange={searchProductsFunc} placeholder="Search Products"/>
@@ -89,6 +89,10 @@ const selectedCategoryFunc = (e)=>{
 					))}         
       </select>
 
+      {/* cart icon */}
+      <svg class="h-7 w-7 text-white shadow-black cursor-pointer hover:drop-shadow-xl"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="9" cy="21" r="1" />  <circle cx="20" cy="21" r="1" />  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
+      {/* cart icon */}
+    
     </div>
   </div>
      </nav>
@@ -109,7 +113,10 @@ const selectedCategoryFunc = (e)=>{
      id={value.id}
      rating={value.rating}
    />
-    ))}
+    ))} 
+       <div className="flex justify-center items-center h-32">
+        <p className="text-center text-cyan-400 text-2xl font-semibold"><span className='text-black'>Products</span> Not Found</p>
+      </div>
   </div>
  {/* Cards End */}
 
