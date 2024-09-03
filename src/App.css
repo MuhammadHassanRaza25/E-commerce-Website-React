@@ -21,6 +21,7 @@ input:focus::placeholder{
 }
 option{
   color: #00d2ff;
+  font-weight: 600;
 }
 
 .heading{

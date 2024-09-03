@@ -18,8 +18,8 @@ function App() {
         const allCategory = data.products.map((all) => all.category);  //get category
 				const filteredCategory = [...new Set(allCategory)];   // filter category
 				setCategory(filteredCategory);  // set category to array.
-      });
-    
+      })
+      .catch((err)=> console.log('Error=>', err))
     }
     //checking data
     // {products.map((value)=>{
@@ -68,34 +68,85 @@ const selectedCategoryFunc = (e)=>{
 }
 // ⬆ Functions For get values of search input & select.⬆ //
 
+// Navbar Toggler
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
+
   return (
     <>
  {/* Navbar Start */}
-     <nav className="navbar flex items-center flex-wrap justify-between p-6 border border-b-gray-400">
-    <div className="flex items-center flex-shrink-0 text-white mr-6">
-      <span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store</span>
-   </div>
-  <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div className="navInputs flex items-center justify-end gap-5 text-sm lg:flex-grow">
-      
-      <input className="font-semibold p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg placeholder:text-gray-500" 
-       type="text" value={searchProducts} onChange={searchProductsFunc} placeholder="Search Products"/>
+      <nav className="navbar flex items-center flex-wrap justify-between p-6 border border-b-gray-400">
+      <div className="flex items-center flex-shrink-0 text-white mr-6">
+        <span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store</span>
+      </div>
 
-      <select value={selectedCategory} onChange={selectedCategoryFunc} className="font-semibold text-gray-500 p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg">
-        <option className="font-semibold" value="Select Category" disabled selected>Select Category</option>
-        <option className="font-semibold" value="">All Products</option>
-        {category.map((value, index) => (    //show category using map.
-						<option value={value} key={index}>{value[0].toUpperCase() + value.slice(1)}</option> //First Letter UpperCase kia h.
-					))}         
-      </select>
+      {/* Toggler button */}
+      <button
+        onClick={toggleNavbar}
+        className="lg:hidden px-3 py-2 text-white shadow-black hover:drop-shadow-xl"
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
 
-      {/* cart icon */}
-      <svg class="h-7 w-7 text-white shadow-black cursor-pointer hover:drop-shadow-xl"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="9" cy="21" r="1" />  <circle cx="20" cy="21" r="1" />  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
-      {/* cart icon */}
-    
-    </div>
-  </div>
-     </nav>
+      {/* Navigation items */}
+      <div className={`w-full lg:flex lg:items-center lg:w-auto transition-transform duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} lg:max-h-none lg:opacity-100`}>
+        <div className="navInputs flex flex-col lg:flex-row lg:items-center lg:justify-end gap-5 text-sm lg:flex-grow">
+          <input
+            className="font-semibold p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg placeholder:text-gray-500"
+            type="text"
+            value={searchProducts}
+            onChange={searchProductsFunc}
+            placeholder="Search Products"
+          />
+
+          <select
+            value={selectedCategory}
+            onChange={selectedCategoryFunc}
+            className="font-semibold text-gray-500 p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg">
+            <option className="font-semibold" value="Select Category" disabled>
+              Select Category
+            </option>
+            <option className="font-semibold" value="">
+              All Products
+            </option>
+            {category.map((value, index) => ( 
+              <option value={value} key={index}>
+                {value[0].toUpperCase() + value.slice(1)}  {/* value get karke first latter upperCase kia h. */}
+              </option>
+            ))}
+          </select>
+
+          {/* Cart icon */}
+          <svg
+            className="h-7 w-7 text-white shadow-black cursor-pointer hover:drop-shadow-xl"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+          {/* Cart icon */}
+        </div>
+      </div>
+    </nav>
  {/* Navbar End */}
 
  {/* Cards Start */}
