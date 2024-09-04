@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function Cards(props){
-  
     const addCartbtn = ()=>{
         alert('Add To Cart Feature Coming Soon 🌏')
     }
@@ -41,11 +40,11 @@ function Cards(props){
             <span className="text-3xl font-bold text-gray-900 dark:text-white"><span className="text-green-500">$</span>{props.price}</span>
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded dark:bg-blue-200 dark:text-blue-800 ml-6">Category: {props.category}</span>
         </div>
-        <div className="mt-5 flex">
-        <Link to={`/products/${props.id}`}>
-        <button className="btn w-full text-white mr-3 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Cart</button>
-        </Link>
-        <button className="btn text-white mr-3 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={addCartbtn}>Add to Cart</button>
+        <div className="mt-5 flex gap-5">
+           <Link to={`/products/${props.id}`} className="LINK">
+              <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Cart</button>
+           </Link>
+            <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={addCartbtn}>Add to Cart</button>
         </div>
     </div>
   </div>

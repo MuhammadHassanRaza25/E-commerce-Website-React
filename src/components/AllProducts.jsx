@@ -151,7 +151,6 @@ function AllProducts() {
   
    {/* Cards Start */}
    <h1 className='heading'><span className='text-black'>Latest</span> Products</h1>
-   
    <div className='flex flex-wrap justify-evenly mb-32 mt-7'>
     {filteredProducts.map((value)=>(
        <Cards
@@ -165,13 +164,10 @@ function AllProducts() {
        rating={value.rating}
      />
       ))} 
-         {/* <div className="flex justify-center items-center h-32">
-          <p className="text-center text-cyan-400 text-2xl font-semibold"><span className='text-black'>Products</span> Not Found</p>
-        </div> */}
     </div>
    {/* Cards End */}
   
-   {/* Footer Start*/}
+   {/* Footer Start */}
       <Footer/>
    {/* Footer End */}
       </>
