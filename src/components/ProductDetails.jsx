@@ -10,7 +10,7 @@ useEffect(()=>{
     fetch(`https://dummyjson.com/products/${id}`)
     .then(res => res.json())
     .then((data)=>{
-       setProducts(data)
+       setProducts(data)    
     })
     .catch((err)=> console.log('error==>', err))
 },[id])
@@ -18,16 +18,16 @@ useEffect(()=>{
 
     return(
         <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container px-5 py-24 mx-auto">
+        <div className="detailContainer container p-6 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+              className="detailImg lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
               src={products.thumbnail}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              {products.category}
+              {products.brand}
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {products.title}
@@ -40,7 +40,7 @@ useEffect(()=>{
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    className="w-4 h-4 text-indigo-500"
+                    className="w-4 h-4 text-yellow-300"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -51,7 +51,7 @@ useEffect(()=>{
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    className="w-4 h-4 text-indigo-500"
+                    className="w-4 h-4 text-yellow-300"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -62,7 +62,7 @@ useEffect(()=>{
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    className="w-4 h-4 text-indigo-500"
+                    className="w-4 h-4 text-yellow-300"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -73,7 +73,7 @@ useEffect(()=>{
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    className="w-4 h-4 text-indigo-500"
+                    className="w-4 h-4 text-yellow-300"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -84,7 +84,7 @@ useEffect(()=>{
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    className="w-4 h-4 text-indigo-500"
+                    className="w-4 h-4 text-yellow-300"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -92,42 +92,21 @@ useEffect(()=>{
                   <span className="text-gray-600 ml-3">{products.rating}</span>
                 </span>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                    </svg>
-                  </a>
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                    </svg>
-                  </a>
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                    </svg>
-                  </a>
+                  <a href="https://github.com/MuhammadHassanRaza25" target="_blank" className="text-gray-500 hover:text-gray-900">
+                  <svg
+                     className="w-4 h-4"
+                     aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="currentColor"
+                     viewBox="0 0 20 20"
+                   >
+                     <path
+                       fillRule="evenodd"
+                       d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                       clipRule="evenodd"
+                     />
+                   </svg>
+                  </a>  
                 </span>
               </div>
               <p className="leading-relaxed">
@@ -135,13 +114,10 @@ useEffect(()=>{
               </p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
-                  <span className="mr-3">Color</span>
-                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none" />
-                  <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none" />
-                  <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none" />
+                  <span className="mr-3 font-medium text-black">Return Policy: {products.returnPolicy}</span>
                 </div>
                 <div className="flex ml-6 items-center">
-                  <span className="mr-3">Size</span>
+                  <span className="mr-3 font-medium text-black">Size</span>
                   <div className="relative">
                     <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                       <option>SM</option>
@@ -165,24 +141,15 @@ useEffect(()=>{
                   </div>
                 </div>
               </div>
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
-                  $58.00
+              <div className="flex items-center w-96">
+                <span className="title-font font-medium text-2xl mr-4 text-gray-900">
+                  <span className="text-green-500">$</span> {products.price}
                 </span>
-                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                  Button
+                <button className="detailCartbtn flex ml-auto text-white font-medium py-2 px-7">
+                  Buy Now
                 </button>
-                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg
-                    fill="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                  </svg>
+                <button className="detailCartbtn flex ml-auto text-white font-medium py-2 px-7">
+                  Add to Cart
                 </button>
               </div>
             </div>
