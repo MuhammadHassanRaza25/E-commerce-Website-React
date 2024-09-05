@@ -42,7 +42,7 @@ function Cards(props){
         </div>
         <div className="mt-5 flex gap-5">
            <Link to={`/products/${props.id}`} className="LINK">
-              <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Cart</button>
+              <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Product</button>
            </Link>
             <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={addCartbtn}>Add to Cart</button>
         </div>
