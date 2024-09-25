@@ -10,6 +10,7 @@ function AllProducts() {
   const [selectedCategory, setSelectedCategory] = useState("")
   const [searchProducts, setSeachProducts] = useState("")
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(true)
   
   const fetchProducts = ()=>{
       fetch('https://dummyjson.com/products')
@@ -31,6 +32,7 @@ function AllProducts() {
   
   // call api function //
   useEffect(()=>{
+    setLoading(false)
     fetchProducts()
   },[])
   
@@ -72,37 +74,49 @@ function AllProducts() {
   
     return (
       <>
-       {/* Navbar Start */}
-        <Navbar
-        searchProductsFunc={searchProductsFunc}
-        searchProducts={searchProducts}
-        selectedCategoryFunc={selectedCategoryFunc}
-        selectedCategory={selectedCategory}
-        category={category}
-        />
-       {/* Navbar End */}
+
+      {loading ? (
+         <div className="flex items-center justify-center h-screen">
+          <div className="loader"></div>
+         </div>
+      )
+      : 
+      (
+        <>
+          {/* Navbar Start */}
+          <Navbar
+          searchProductsFunc={searchProductsFunc}
+          searchProducts={searchProducts}
+          selectedCategoryFunc={selectedCategoryFunc}
+          selectedCategory={selectedCategory}
+          category={category}
+          />
+          {/* Navbar End */}
   
-       {/* Cards Start */}
-       <h1 className='heading'><span className='text-black'>Latest</span> Products</h1>
-       <div className='flex flex-wrap justify-evenly mb-32 mt-7'>
-        {filteredProducts.map((value)=>(
-           <Cards
-           category={value.category}
-           key={value.id}
-           images={value.thumbnail}
-           description={value.description}
-           price={value.price}
-           title={value.title}
-           id={value.id}
-           rating={value.rating}
-         />
+          {/* Cards Start */}
+          <h1 className='heading'><span className='text-black'>Latest</span> Products</h1>
+          <div className='flex flex-wrap justify-evenly mb-32 mt-7'>
+           {filteredProducts.map((value)=>(
+              <Cards
+              category={value.category}
+              key={value.id}
+              images={value.thumbnail}
+              description={value.description}
+              price={value.price}
+              title={value.title}
+              id={value.id}
+              rating={value.rating}
+            />
           ))} 
         </div>
-       {/* Cards End */}
+         {/* Cards End */}
   
-       {/* Footer Start */}
+         {/* Footer Start */}
           <Footer/>
-       {/* Footer End */}
+         {/* Footer End */}
+        </>
+      )}
+
       </>
     )
   }
