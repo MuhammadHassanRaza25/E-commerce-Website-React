@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
 
@@ -62,8 +63,11 @@ const toggleNavbar = () => {
               ))}
             </select>
           </div>
+          <Link to={"/Login"}>
+            <button className="bg-white ml-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md">Login</button>
+          </Link>
         </div>
-         </nav>
+        </nav>
       {/* Navbar End */}
    </>
  )

@@ -17,6 +17,7 @@ useEffect(()=>{
 
 
     return(
+      <>
         <section className="text-gray-600 body-font overflow-hidden">
         <div className="detailContainer container p-6 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -155,7 +156,8 @@ useEffect(()=>{
             </div>
           </div>
         </div>
-      </section>      
+      </section>    
+      </>  
     )
 }
 
