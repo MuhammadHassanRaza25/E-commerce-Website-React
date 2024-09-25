@@ -76,8 +76,8 @@ function AllProducts() {
       <>
 
       {loading ? (
-          <div className="bg-[#ffffff] w-full h-screen fixed top-0 left-0 flex justify-center items-center">
-            <div className="loader">.</div>
+          <div className="bg-[#ededed] w-full h-screen fixed top-0 left-0 flex justify-center items-center">
+            <div className="loader">&nbsp;</div>
          </div>
       )
       : 

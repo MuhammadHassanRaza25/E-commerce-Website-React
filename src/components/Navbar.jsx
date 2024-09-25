@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { Avatar } from "antd";
+import { signOut } from "firebase/auth/cordova";
+import { auth } from "../Utils/Firebase";
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
 
@@ -8,6 +12,15 @@ const [isOpen, setIsOpen] = useState(false);
 const toggleNavbar = () => {
     setIsOpen(!isOpen);
 };
+
+// get user with the help of context
+const {user, setUser} = useContext(AuthContext);
+console.log("user",user);
+
+//logout function
+const logoutUser = async()=>{
+  await signOut(auth)
+}
 
     return(
      <>
@@ -63,9 +76,22 @@ const toggleNavbar = () => {
               ))}
             </select>
           </div>
+          {user?.isLogin
+           ?
+           <>
+            <Link to={"/Login"}>
+             <button 
+             className="bg-white ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
+             onClick={logoutUser}
+             >Logout</button>
+            </Link>
+            <Avatar src={user?.userInfo.photoUrl} size="large"/>
+           </>
+          :
           <Link to={"/Login"}>
             <button className="bg-white ml-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md">Login</button>
           </Link>
+          }
         </div>
         </nav>
       {/* Navbar End */}
