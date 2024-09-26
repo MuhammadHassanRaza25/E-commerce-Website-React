@@ -193,11 +193,11 @@ option{
   .detailContainer{
     margin-top: 1%;
     margin-bottom: 1%;
-    width: 100% !important;
+    width: 90% !important;
     height: 100vh !important;
   }
   .detailImg{
-    width: 350px !important;
+    width: 300px !important;
     height: 50vh !important;
   }
   .navInputs{
@@ -226,6 +226,10 @@ option{
   .signupForm{
     width: 90vw;
   }
+  .detailImg{
+    width: 250px !important;
+    height: 30vh !important;
+  }
 }
 @media(max-width:430px){
   .navInputs{
@@ -242,6 +246,19 @@ option{
   }
   .card{
     margin-bottom: 8%;
+  }
+  .detailCartbtn{
+    font-size: small;
+    width: 100% !important;
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+  }
+  .detailBtnPriceDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100% !important;
   }
 }
 /* Responsiveness End */

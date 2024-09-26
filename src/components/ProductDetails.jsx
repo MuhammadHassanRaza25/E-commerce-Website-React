@@ -142,7 +142,7 @@ useEffect(()=>{
                   </div>
                 </div>
               </div>
-              <div className="flex items-center w-96">
+              <div className="detailBtnPriceDiv flex items-center w-96">
                 <span className="title-font font-medium text-2xl mr-4 text-gray-900">
                   <span className="text-green-500">$</span> {products.price}
                 </span>
