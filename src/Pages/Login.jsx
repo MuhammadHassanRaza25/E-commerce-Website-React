@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../Utils/Firebase";
+import { auth } from "../utils/firebase";
 import "../App.css"
 
 function Login(){
@@ -17,7 +17,6 @@ function Login(){
    }
    catch(err){
     console.log(err);
-    setLoading(false)
    }
   }
 

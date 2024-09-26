@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext.jsx";
 import { Avatar } from "antd";
 import { signOut } from "firebase/auth/cordova";
-import { auth } from "../Utils/Firebase";
+import { auth } from "../utils/firebase";  
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
 
@@ -79,6 +79,7 @@ const logoutUser = async()=>{
           {user?.isLogin
            ?
            <>
+           <div className="btnOrAvatarDiv">
             <Link to={"/Login"}>
              <button 
              className="bg-white ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
@@ -86,11 +87,16 @@ const logoutUser = async()=>{
              >Logout</button>
             </Link>
             <Avatar src={user?.userInfo.photoUrl} size="large"/>
+            </div>
            </>
           :
-          <Link to={"/Login"}>
-            <button className="bg-white ml-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md">Login</button>
-          </Link>
+          <>
+          <div className="btnOrAvatarDiv">
+            <Link to={"/Login"}>
+              <button className="bg-white ml-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md">Login</button>
+            </Link>
+          </div>
+          </>
           }
         </div>
         </nav>
