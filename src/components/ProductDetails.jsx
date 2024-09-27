@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Navbar from "./Navbar";
 
 function ProductDetails(){
 
@@ -15,9 +16,30 @@ useEffect(()=>{
     .catch((err)=> console.log('error==>', err))
 },[id])
 
+// navbar with only login/signup for detail page.
+const [category, setCategory] = useState([])
+const fetchProducts = ()=>{
+    fetch('https://dummyjson.com/products')
+    .then((res) => res.json())
+    .then((data) =>{
+      const allCategory = data.products.map((all) => all.category);  //get category
+              const filteredCategory = [...new Set(allCategory)];   // filter category
+              setCategory(filteredCategory);  // set category to array.
+    })
+    .catch((err)=> console.log('Error=>', err))
+  }
+    // call api function //
+    useEffect(()=>{
+      fetchProducts()
+    },[])
+
 
     return(
       <>
+       <Navbar
+        category={category}
+       />
+
         <section className="text-gray-600 body-font overflow-hidden">
         <div className="detailContainer container p-6 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">

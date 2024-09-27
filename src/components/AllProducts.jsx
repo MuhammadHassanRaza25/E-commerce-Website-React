@@ -3,6 +3,7 @@ import '../App.css'
 import Footer from './Footer'
 import Cards from './Cards'
 import Navbar from './Navbar'
+import ProductDetails from './ProductDetails'
 
 function AllProducts() {
   const [products, setProducts] = useState([])

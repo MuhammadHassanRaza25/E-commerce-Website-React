@@ -20,6 +20,7 @@ console.log("user",user);
 //logout function
 const logoutUser = async()=>{
   await signOut(auth)
+  // window.location.href = "/"
 }
 
     return(
