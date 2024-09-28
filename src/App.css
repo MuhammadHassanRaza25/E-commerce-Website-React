@@ -251,6 +251,7 @@ option{
   .card{
     margin-bottom: 8%;
     height: 73.5vh;
+    width: 350px;
   }
   .detailContainer{
     margin-top: 8%;
@@ -271,6 +272,11 @@ option{
     flex-wrap: wrap;
     justify-content: center;
     width: 100% !important;
+  }
+}
+@media(max-width:370px){
+  .card{
+    width: 325px;
   }
 }
 /* Responsiveness End */
