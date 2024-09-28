@@ -200,6 +200,14 @@ option{
     width: 300px !important;
     height: 50vh !important;
   }
+  .navbar{
+    padding-bottom: 0 !important;
+  }
+  .cartIcon{
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 2%;
+  }
   .navInputs{
     margin-top: 3%;
     margin-bottom: 2.5%;
@@ -216,6 +224,10 @@ option{
   }
 }
 @media(max-width:600px){
+  .cartIcon{
+    margin-top: 8%;
+    margin-bottom: 5%;
+  }
   .navInputs{
     margin-top: 5%;
     margin-bottom: 4%;

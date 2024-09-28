@@ -3,7 +3,6 @@ import '../App.css'
 import Footer from './Footer'
 import Cards from './Cards'
 import Navbar from './Navbar'
-import ProductDetails from './ProductDetails'
 
 function AllProducts() {
   const [products, setProducts] = useState([])
@@ -93,7 +92,6 @@ function AllProducts() {
           category={category}
           />
           {/* Navbar End */}
-  
           {/* Cards Start */}
           <h1 className='heading'><span className='text-black'>Latest</span> Products</h1>
           <div className='flex flex-wrap justify-evenly mb-32 mt-7'>

@@ -12,9 +12,6 @@ function Cards(props){
    </div>
     <div className="px-5 pb-5">
         <h5 className="cardTitle text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.title}</h5>
-        {/* <div className="desc">
-            {props.description}
-        </div> */}
         <div className="flex items-center mt-2.5 mb-5">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
                 <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
