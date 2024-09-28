@@ -28,7 +28,7 @@ const logoutUser = async()=>{
        {/* Navbar Start */}
          <nav className="navbar flex items-center flex-wrap justify-between p-5 border border-b-gray-400">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store</span>
+          <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store</span></Link>
         </div>
   
         {/* Toggler button */}

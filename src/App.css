@@ -191,7 +191,7 @@ option{
 }
 @media(max-width:1024px){
   .detailContainer{
-    margin-top: 1%;
+    margin-top: 5%;
     margin-bottom: 1%;
     width: 90% !important;
     height: 100vh !important;
@@ -244,8 +244,20 @@ option{
   .navInputs select{
     width: 100%;
   }
+  .heading{
+    font-size: 30px;
+    margin-top: 15%;
+ }
   .card{
     margin-bottom: 8%;
+    height: 73.5vh;
+  }
+  .detailContainer{
+    margin-top: 8%;
+  }
+  .detailImg{
+    width: 250px !important;
+    height: 35vh !important;
   }
   .detailCartbtn{
     font-size: small;
