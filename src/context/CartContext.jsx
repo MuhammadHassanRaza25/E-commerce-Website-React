@@ -26,6 +26,13 @@ function removeCartItem(id){
  setCartItems([...arr])        //Cart ko update kia hai item remove krne ke baad.
 }
 
+function minusCartquantity(id){ 
+    const arr = cartItems
+    const cartItemIndex = cartItems.findIndex((data)=> data.id == id)  //findIndex index num return krta h.
+    arr[cartItemIndex].quantity--
+    setCartItems([...arr]) //Cart ko update kia hai.
+ }
+
 function isItemAdded(id){
  const arr = cartItems
  const cartItemIndex = cartItems.findIndex((data)=> data.id == id)    //findIndex index num return krta h.
@@ -38,7 +45,7 @@ function isItemAdded(id){
 }
 
     return(
-        <CartContext.Provider value={{cartItems, addCartItem, removeCartItem, isItemAdded}}>
+        <CartContext.Provider value={{cartItems, addCartItem, removeCartItem, isItemAdded, minusCartquantity}}>
             {children}
         </CartContext.Provider>
     )

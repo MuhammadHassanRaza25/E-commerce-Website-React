@@ -7,7 +7,7 @@ function Cards(props){
   const {addCartItem, isItemAdded} = useContext(CartContext)
   
    return (
-   <div className="card max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">
+   <div className="card max-w-sm bg-white border-2 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="image">
         <img className="p-8 rounded-t-lg" src={props.images} alt="product image" />
    </div>

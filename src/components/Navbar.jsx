@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext.jsx";
 import { Avatar, Badge } from "antd";
 import { signOut } from "firebase/auth/cordova";
 import { auth } from "../utils/firebase";  
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { CarryOutTwoTone, ShakeOutlined, ShopFilled, ShopOutlined, ShoppingCartOutlined, ShoppingOutlined, ShopTwoTone } from "@ant-design/icons";
 import { CartContext } from '../context/CartContext'
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
@@ -33,7 +33,7 @@ const {cartItems} = useContext(CartContext)
        {/* Navbar Start */}
          <nav className="navbar flex items-center flex-wrap justify-between px-5 py-3 border border-b-gray-400">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store</span></Link>
+          <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store <ShopOutlined></ShopOutlined></span></Link>
         </div>
   
         {/* Toggler button */}

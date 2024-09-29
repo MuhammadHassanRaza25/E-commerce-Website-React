@@ -59,11 +59,19 @@ option{
   color: #00d2ff;
   font-weight: bold;
   text-align: center;
-  font-size: 35px;
-  margin-top: 5%;
-  margin-bottom: 4%;
+  font-size: 40px;
+  margin-top: 3%;
+  margin-bottom: 5%;
 }
 /* cards styling start */
+.cartDiv{
+  transition: all 0.5s;
+}
+.cartDiv:hover{
+  border-color: #00d2ff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all 0.5s;
+}
 .card{
   margin-top: 2%;
   margin-bottom: 2%;
@@ -208,6 +216,9 @@ option{
     width: 300px !important;
     height: 50vh !important;
   }
+  .cartImg{
+    width: 150px !important;
+  }
   .navbar{
     padding-bottom: 0 !important;
   }
@@ -268,6 +279,11 @@ option{
     font-size: 30px;
     margin-top: 15%;
  }
+ .headingCart{
+   font-size: 30px;
+   margin-top: 15%;
+   margin-bottom: 10%;
+  }
   .card{
     margin-bottom: 8%;
     height: 73.5vh;

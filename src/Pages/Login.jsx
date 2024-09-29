@@ -11,7 +11,7 @@ function Login(){
 
   const signInUser = async ()=>{
    try{
-    await signInWithEmailAndPassword(auth, email, password).then(()=>{
+    await signInWithEmailAndPassword(auth, email, password).then(()=>{ 
      navigate('/')
     })
    }
