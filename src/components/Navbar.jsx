@@ -5,6 +5,7 @@ import { Avatar, Badge } from "antd";
 import { signOut } from "firebase/auth/cordova";
 import { auth } from "../utils/firebase";  
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { CartContext } from '../context/CartContext'
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
 
@@ -23,6 +24,9 @@ const logoutUser = async()=>{
   await signOut(auth)
   // window.location.href = "/"
 }
+
+//show cart length on badge.
+const {cartItems} = useContext(CartContext)
 
     return(
      <>
@@ -80,12 +84,14 @@ const logoutUser = async()=>{
           </div>
 
           {/* cart icon from ant design */}
-          <div className="cartIcon">
-            <Badge count={1} className="ml-5 mr-2">
-            <ShoppingCartOutlined className="text-3xl text-white cursor-pointer">
-            </ShoppingCartOutlined>
-            </Badge>
-          </div>
+          <Link to="/Cart">
+           <div className="cartIcon">
+             <Badge count={cartItems.length} className="ml-5 mr-2">
+             <ShoppingCartOutlined className="text-3xl text-white cursor-pointer">
+             </ShoppingCartOutlined>
+             </Badge>
+           </div>
+          </Link>
 
           {/* login/logout button $ avatar ⬇*/}
             {user?.isLogin

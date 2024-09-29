@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import '../App.css'
 import Footer from './Footer'
 import Cards from './Cards'
@@ -92,19 +92,20 @@ function AllProducts() {
           category={category}
           />
           {/* Navbar End */}
+
           {/* Cards Start */}
           <h1 className='heading'><span className='text-black'>Latest</span> Products</h1>
           <div className='flex flex-wrap justify-evenly mb-32 mt-7'>
            {filteredProducts.map((value)=>(
               <Cards
               category={value.category}
-              key={value.id}
               images={value.thumbnail}
               description={value.description}
               price={value.price}
               title={value.title}
               id={value.id}
               rating={value.rating}
+              data={value}
             />
           ))} 
         </div>

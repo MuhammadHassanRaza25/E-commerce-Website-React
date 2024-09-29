@@ -55,6 +55,14 @@ option{
    font-size: 35px;
    margin-top: 8%;
 }
+.headingCart{
+  color: #00d2ff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 35px;
+  margin-top: 5%;
+  margin-bottom: 4%;
+}
 /* cards styling start */
 .card{
   margin-top: 2%;

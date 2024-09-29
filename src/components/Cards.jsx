@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import { CartContext } from '../context/CartContext'
+import { useContext } from "react";
 
 function Cards(props){
-    const addCartbtn = ()=>{
-        alert('Add To Cart Feature Coming Soon 🌏')
-    }
-
+// cart context se addCartItem function get kia hai.
+  const {addCartItem, isItemAdded} = useContext(CartContext)
+  
    return (
    <div className="card max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="image">
@@ -41,7 +42,10 @@ function Cards(props){
            <Link to={`/products/${props.id}`} className="LINK">
               <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Product</button>
            </Link>
-            <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={addCartbtn}>Add to Cart</button>
+            <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
+             onClick={()=> addCartItem(props.data)}>
+             {isItemAdded(props.id)? `Added ${isItemAdded(props.id).added}` : 'Add to Cart'}
+            </button>
         </div>
     </div>
   </div>

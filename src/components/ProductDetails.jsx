@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Navbar from "./Navbar";
+import { CartContext } from '../context/CartContext'
+import { useContext } from "react";
 
 function ProductDetails(){
 
 const { id } = useParams()
 const [products,setProducts]= useState('')
+console.log(products.id);
 
 useEffect(()=>{
     fetch(`https://dummyjson.com/products/${id}`)
@@ -33,6 +36,8 @@ const fetchProducts = ()=>{
       fetchProducts()
     },[])
 
+// cart context se addCartItem function get kia hai.
+const {addCartItem, isItemAdded} = useContext(CartContext)
 
     return(
       <>
@@ -171,8 +176,9 @@ const fetchProducts = ()=>{
                 <button className="detailCartbtn flex ml-auto text-white font-medium py-2 px-7">
                   Buy Now
                 </button>
-                <button className="detailCartbtn flex ml-auto text-white font-medium py-2 px-7">
-                  Add to Cart
+                <button className="detailCartbtn flex ml-auto text-white font-medium py-2 px-7"
+                 onClick={()=> addCartItem(products)}>
+                 {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
                 </button>
               </div>
             </div>
