@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import Navbar from "./Navbar";
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
+import {message} from 'antd';
 
 function ProductDetails(){
 
@@ -177,7 +178,7 @@ const {addCartItem, isItemAdded} = useContext(CartContext)
                   Buy Now
                   </button>
                 <button className="detailCartbtn text-white font-medium py-2 px-7"
-                 onClick={()=> addCartItem(products)}>
+                 onClick={()=> {addCartItem(products), message.success('Added to Cart Successfully')}}>
                  {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
                 </button>
               </div>

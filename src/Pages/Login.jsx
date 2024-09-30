@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import "../App.css"
+import {message} from 'antd';
 
 function Login(){
   const [email, setEmail] = useState("")
@@ -13,11 +14,27 @@ function Login(){
   const signInUser = async ()=>{
    try{
     await signInWithEmailAndPassword(auth, email, password).then(()=>{ 
-     navigate('/')
+     message.success('Login Successfully')
+     setTimeout(() => {
+      navigate('/')
+     }, 1000);
     })
    }
    catch(err){
     console.log(err);
+    const errorCode = err.code
+    if(errorCode == 'auth/missing-password'){
+      message.error('Password is missing!')
+    }
+    else if(errorCode == 'auth/invalid-credential'){
+      message.error('Incorrect Password')
+    }
+    else if(errorCode == 'auth/invalid-email'){
+      message.error('Invalid Email')
+    }
+    else if(errorCode == 'auth/missing-password'){
+      message.error('Password is missing!')
+    }
    }
   }
 

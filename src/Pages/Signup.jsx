@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword ,GoogleAuthProvider, signInWithPopup} fr
 import {auth} from "../utils/firebase"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {message} from 'antd';
 
 function Signup(){
   const [username, setUsername] = useState("")
@@ -13,11 +14,27 @@ function Signup(){
   const signupUser = async ()=>{
     try{
       await createUserWithEmailAndPassword(auth, email, password).then(()=>{
-       navigate('/Login')
+       message.success('Signup Successfully')
+       setTimeout(() => {
+        navigate('/Login')
+       }, 1000);
       })
      }
      catch(err){
       console.log(err);
+      const errorCode = err.code
+      if(errorCode == 'auth/email-already-in-use'){
+        message.error('This Email Is Already In Use!')
+      }
+      else if(errorCode == 'auth/weak-password'){
+        message.error('Your password must be atleast 6 characters')
+      }
+      else if(errorCode == 'auth/invalid-email'){
+        message.error('Invalid Email')
+      }
+      else if(errorCode == 'auth/missing-password'){
+        message.error('Password is missing!')
+      }
      }
   }
 

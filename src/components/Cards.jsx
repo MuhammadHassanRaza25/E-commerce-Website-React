@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
+import {message} from 'antd';
 
 function Cards(props){
 // cart context se addCartItem function get kia hai.
@@ -43,7 +44,7 @@ function Cards(props){
               <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Product</button>
            </Link>
             <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
-             onClick={()=> addCartItem(props.data)}>
+             onClick={()=> {addCartItem(props.data) , message.success('Added to Cart Successfully')} }>
              {isItemAdded(props.id)? `Added ${isItemAdded(props.id).added}` : 'Add to Cart'}
             </button>
         </div>

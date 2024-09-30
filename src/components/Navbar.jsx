@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth/cordova";
 import { auth } from "../utils/firebase";  
 import { ShopOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { CartContext } from '../context/CartContext'
+import {message} from 'antd';
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
 
@@ -22,7 +23,7 @@ console.log("user",user);
 //logout function
 const logoutUser = async()=>{
   await signOut(auth)
-  // window.location.href = "/"
+  message.success('Logout Successfully')
 }
 
 //show cart length on badge.
