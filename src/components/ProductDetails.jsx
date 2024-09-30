@@ -169,10 +169,13 @@ const {addCartItem, isItemAdded} = useContext(CartContext)
                   </div>
                 </div>
               </div>
-              <div className="detailBtnPriceDiv flex gap-28 items-center w-96">
-                <span className="title-font font-medium text-2xl mr-4 text-gray-900">
+              <div className="detailBtnPriceDiv flex gap-2 items-center w-96">
+                <span className="title-font font-medium text-xl mr-4 text-gray-900">
                   <span className="text-green-500">$</span> {products.price}
                 </span>
+                <button className="detailCartbtn text-white font-medium py-2 px-7">
+                  Buy Now
+                  </button>
                 <button className="detailCartbtn text-white font-medium py-2 px-7"
                  onClick={()=> addCartItem(products)}>
                  {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}

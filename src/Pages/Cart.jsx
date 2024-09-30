@@ -2,10 +2,11 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer'
 
 function Cart(){
 
-// cart context se cartItems get kiye hain.
+// cart ke context se cartItems get kiye hain.
 const {cartItems, removeCartItem, addCartItem, minusCartquantity} = useContext(CartContext)
 console.log("cartItems",cartItems);
 
@@ -15,28 +16,29 @@ const totalQuantity = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity, 0
 
     return(
     <>   
-    <h1 className='headingCart'><span className='text-black'><Link to={'/'}><ArrowLeftOutlined className='text-cyan-400 hover:text-cyan-300'></ArrowLeftOutlined></Link> Shopping</span> Cart</h1>
+    {/* Cart Heading */}
+    <h1 className='headingCart flex flex-wrap justify-center items-center gap-2'><Link to={'/'}><ArrowLeftOutlined className='arrow mr-10 p-2 bg-gray-100 text-3xl text-cyan-400 rounded-full hover:text-gray-100 hover:bg-cyan-400 transition-all'></ArrowLeftOutlined></Link> <span className='text-black'>Shopping</span> Cart <img className='cartImg w-14' src={'https://cdn-icons-gif.flaticon.com/15713/15713014.gif'} alt="image"/></h1>
     
     {/* total amount & quantity ⬇ */}
       <div className='cartDetailsDiv flex flex-wrap justify-center gap-10 mb-14'>
-        <div className='cartDiv mb-3 py-6 p-5 rounded-3xl w-96 border-2 border-gray-200'>
+        <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>Total Amount</h1>
           <h2 className='text-2xl font-semibold text-center mt-5'>{totalAmount}</h2>
         </div>
   
-        <div className='cartDiv mb-3 py-6 p-5 rounded-3xl w-96 border-2 border-gray-200'>
+        <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>Total Quantity</h1>
           <h2 className='text-2xl font-semibold text-center mt-5'>{totalQuantity}</h2>
         </div>
   
-        <div className='cartDiv mb-3 py-6 p-5 rounded-3xl w-96 border-2 border-gray-200'>
+        <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>CheckOut</h1>
           <button className="btn mt-5 w-full text-white font-medium rounded-lg text-md px-5 py-3 text-center">CheckOut</button>
         </div>
       </div>
    {/* total amount & quantity ⬆ */}
  
-    {/* Showing Carts */}
+    {/* Showing Carts data using map ⬇ */}
     {cartItems.map((data)=>{
      return(
         <section>
@@ -139,6 +141,11 @@ const totalQuantity = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity, 0
      </section>
      )
     })}
+    {/* Showing Carts data using map ⬆ */}
+
+    {/* Footer Start */}
+        <div className='mt-20'><Footer/></div>
+    {/* Footer End */}
     </>
     )
 }

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext.jsx";
 import { Avatar, Badge } from "antd";
 import { signOut } from "firebase/auth/cordova";
 import { auth } from "../utils/firebase";  
-import { CarryOutTwoTone, ShakeOutlined, ShopFilled, ShopOutlined, ShoppingCartOutlined, ShoppingOutlined, ShopTwoTone } from "@ant-design/icons";
+import { ShopOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { CartContext } from '../context/CartContext'
 
 function Navbar({searchProductsFunc, searchProducts, selectedCategoryFunc, selectedCategory, category}){
@@ -15,7 +15,7 @@ const toggleNavbar = () => {
     setIsOpen(!isOpen);
 };
 
-// get user with the help of context
+// get user with the help of AuthContext
 const {user, setUser} = useContext(AuthContext);
 console.log("user",user);
 

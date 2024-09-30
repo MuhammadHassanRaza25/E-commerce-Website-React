@@ -9,6 +9,7 @@ function Signup(){
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
+  // signup user
   const signupUser = async ()=>{
     try{
       await createUserWithEmailAndPassword(auth, email, password).then(()=>{
@@ -17,7 +18,6 @@ function Signup(){
      }
      catch(err){
       console.log(err);
-      // setLoading(false)
      }
   }
 

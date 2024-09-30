@@ -9,6 +9,7 @@ function Login(){
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
+  // signin/login user
   const signInUser = async ()=>{
    try{
     await signInWithEmailAndPassword(auth, email, password).then(()=>{ 
