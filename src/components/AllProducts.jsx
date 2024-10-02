@@ -3,6 +3,13 @@ import '../App.css'
 import Footer from './Footer'
 import Cards from './Cards'
 import Navbar from './Navbar'
+import { Carousel } from "antd";
+
+// slider image style
+const sliderImg = {
+  height: '60vh',
+  width: '100vw'
+};
 
 function AllProducts() {
   const [products, setProducts] = useState([])
@@ -93,10 +100,27 @@ function AllProducts() {
           />
           {/* Navbar End */}
 
+          {/* Slider Start */}
+          <Carousel autoplay>
+            <div>
+              <img className='sliderImage'  style={sliderImg} src="https://www.thefruitshop.in/images/header3/slider1.png" alt="image" />
+            </div>
+            <div>
+              <img className='sliderImage'  style={sliderImg} src="https://static.vecteezy.com/system/resources/previews/046/699/056/non_2x/good-food-fresh-and-healthy-farm-products-horizontal-banner-with-corner-frame-of-vegetables-icons-space-for-text-isolated-background-organic-natural-veggies-for-poster-menu-flyer-vector.jpg" alt="image" />
+            </div>
+            <div>
+              <img className='sliderImage'  style={sliderImg} src="https://muhammadhassanraza25.github.io/Hassan-Raza-Store/images/img2.jpg" alt="image" />
+            </div>
+            <div>
+              <img className='sliderImage' style={sliderImg} src="https://t4.ftcdn.net/jpg/03/45/73/61/360_F_345736111_up8XDxSYwaoOfSC88vQTPTpA3QhI3OSn.jpg" alt="image" />
+            </div>
+          </Carousel>
+         {/* Slider End */}
+
           {/* heading */}
           <h1 className='heading flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='w-14' src={'https://r2.community.samsung.com/t5/image/serverpage/image-id/2858216iF966CF430D380489/image-size/large?v=v2&px=999'} alt="image" /></h1>
           {/* Cards Start */}
-          <div className='flex flex-wrap justify-evenly mb-32 mt-7'>
+          <div className='flex flex-wrap justify-evenly mb-32 mt-3'>
            {filteredProducts.map((value)=>(
               <Cards
               category={value.category}

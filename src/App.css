@@ -31,8 +31,9 @@
 
 .navbar{
   background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
-  position: sticky;
-  top: 0;
+  /* position: sticky; */
+  /* top: 0; */
+  /* z-index: 99999; */
 }
 .nav-heading{
   color: whitesmoke;
@@ -76,7 +77,6 @@ option{
   margin-top: 2%;
   margin-bottom: 2%;
   width: 380px;
-  height: 74.5vh;
   transition: all 0.5s;
 }
 .card:hover{
@@ -206,6 +206,9 @@ option{
   }
 }
 @media(max-width:1024px){
+  .sliderImage{
+    height: 40vh !important;
+  }
   .detailContainer{
     margin-top: 5%;
     margin-bottom: 1%;
@@ -243,6 +246,9 @@ option{
   }
 }
 @media(max-width:600px){
+  .sliderImage{
+    height: 30vh !important;
+  }
   .cartIcon{
     margin-top: 8%;
     margin-bottom: 5%;
@@ -263,6 +269,12 @@ option{
   }
 }
 @media(max-width:430px){
+  .nav-heading{
+    font-size: 20px !important;
+  }
+  .sliderImage{
+    height: 20vh !important;
+  }
   .navInputs{
     margin-top: 5%;
     width: 100%;
@@ -314,6 +326,9 @@ option{
     flex-wrap: wrap;
     justify-content: center;
     width: 100% !important;
+  }
+  .cartDiv h1{
+    font-size: 25px !important;
   }
 }
 @media(max-width:370px){
