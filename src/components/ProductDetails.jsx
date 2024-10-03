@@ -3,14 +3,15 @@ import { useParams } from "react-router";
 import Navbar from "./Navbar";
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
-import {message} from 'antd';
+import {message,Modal} from 'antd';
+import { ShoppingFilled } from "@ant-design/icons";
 
 function ProductDetails(){
 
+// id functionality
 const { id } = useParams()
 const [products,setProducts]= useState('')
 console.log(products.id);
-
 useEffect(()=>{
     fetch(`https://dummyjson.com/products/${id}`)
     .then(res => res.json())
@@ -19,6 +20,7 @@ useEffect(()=>{
     })
     .catch((err)=> console.log('error==>', err))
 },[id])
+
 
 // navbar with only login/signup for detail page.
 const [category, setCategory] = useState([])
@@ -40,8 +42,48 @@ const fetchProducts = ()=>{
 // cart context se addCartItem function get kia hai.
 const {addCartItem, isItemAdded} = useContext(CartContext)
 
+//Modal function Start
+const [isModalOpen, setIsModalOpen] = useState(false);
+const showModal = ()=>{
+  setIsModalOpen(true);
+  };
+//Modal function End
+
     return(
       <>
+
+       {/* Modal Start */}
+         <Modal centered title="Buy Now" open={isModalOpen}    
+          onCancel={() => setIsModalOpen(false)}
+          footer={null}>
+          <form>
+          {/* inputs */}
+           <div className="w-full mt-5">
+             <div className="flex gap-5">
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Name"/>
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Email"/>
+             </div>
+             <div className="flex gap-5">
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="number" placeholder="Quantity"/>
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Location"/>
+             </div>
+           </div>
+
+           {/* product short details */}
+           <div className="mb-3 mt-1 p-1 rounded-lg">
+             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Product Title: {products.title}</h1>
+             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Return Policy: {products.returnPolicy}</h1>
+             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Price: <span className="text-green-500">$</span> {products.price}</h1>
+           </div>
+
+           {/* order button */}
+           <div className="flex justify-center">
+              <button className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+            </div>
+          </form>
+        </Modal>
+      {/* Modal End */}
+
        <Navbar
         category={category}
        />
@@ -174,9 +216,9 @@ const {addCartItem, isItemAdded} = useContext(CartContext)
                 <span className="title-font font-medium text-xl mr-4 text-gray-900">
                   <span className="text-green-500">$</span> {products.price}
                 </span>
-                <button className="detailCartbtn text-white font-medium py-2 px-7">
-                  Buy Now
-                  </button>
+                <button onClick={showModal} className="detailCartbtn text-white font-medium py-2 px-7">
+                   Buy Now
+                </button>
                 <button className="detailCartbtn text-white font-medium py-2 px-7"
                  onClick={()=> {addCartItem(products), message.success('Added to Cart Successfully')}}>
                  {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}

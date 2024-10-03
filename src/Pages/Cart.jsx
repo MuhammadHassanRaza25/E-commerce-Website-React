@@ -1,8 +1,10 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { CartContext } from '../context/CartContext'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer'
+import {Modal} from 'antd';
+import { ShoppingFilled } from "@ant-design/icons";
 
 function Cart(){
 
@@ -14,6 +16,13 @@ console.log("cartItems",cartItems);
 const totalAmount = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity * Obj.price, 0)
 const totalQuantity = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity, 0)
 
+//Modal function Start
+const [isModalOpen, setIsModalOpen] = useState(false);
+const showModal = ()=>{
+  setIsModalOpen(true);
+  };
+//Modal function End
+
     return(
     <>   
     {/* Cart Heading */}
@@ -23,24 +32,56 @@ const totalQuantity = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity, 0
       <div className='cartDetailsDiv flex flex-wrap justify-center gap-10 mb-14'>
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>Total Amount</h1>
-          <h2 className='text-2xl font-semibold text-center mt-5'>{totalAmount}</h2>
+          <h2 className='text-2xl font-bold text-center mt-5'><span className="text-green-500">$</span>{totalAmount}</h2>
         </div>
   
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>Total Quantity</h1>
-          <h2 className='text-2xl font-semibold text-center mt-5'>{totalQuantity}</h2>
+          <h2 className='text-2xl font-bold text-center mt-5'>{totalQuantity}</h2>
         </div>
   
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>CheckOut</h1>
-          <button className="btn mt-5 w-full text-white font-medium rounded-lg text-md px-5 py-3 text-center">CheckOut</button>
+          <button onClick={showModal} className="btn mt-5 w-full text-white font-medium rounded-lg text-md px-5 py-3 text-center">CheckOut</button>
         </div>
       </div>
    {/* total amount & quantity ⬆ */}
+
+    {/* Modal Start */}
+    <Modal centered title="Buy Now" open={isModalOpen}    
+          onCancel={() => setIsModalOpen(false)}
+          footer={null}>
+          <form>
+          {/* inputs */}
+           <div className="w-full mt-5">
+             <div className="flex gap-5">
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Name"/>
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Email"/>
+             </div>
+             <div className="flex gap-5">
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="number" placeholder="Quantity"/>
+               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Location"/>
+             </div>
+           </div>
+
+           {/* product short details */}
+           <div className="mb-3 mt-1 p-1 rounded-lg">
+             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Total Amount: <span className="text-green-500">$</span>{totalAmount}</h1>
+             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Total Quantity: {totalQuantity}</h1>
+           </div>
+
+           {/* order button */}
+           <div className="flex justify-center">
+              <button className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+            </div>
+          </form>
+        </Modal>
+       {/* Modal End */}
  
     {/* Showing Carts data using map ⬇ */}
     {cartItems.map((data)=>{
      return(
+      <>
         <section>
         <div className="w-full max-w-7xl md:px-5 lg-6 mx-auto">        
           <div className="cartDiv rounded-3xl border-2 border-gray-200 hover:border-cyan-400 p-4 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 ">
@@ -131,14 +172,15 @@ const totalQuantity = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity, 0
                     </svg>
                   </button>
                 </div>
-                <h6 className="text-cyan-400 font-manrope font-bold text-2xl leading-9 text-right">
-                  {data.price}
+                <h6 className="font-manrope font-bold text-2xl leading-9 text-right">
+                <span className="text-green-500">$</span>{data.price}
                 </h6>
               </div>
             </div>
           </div>
         </div>     
      </section>
+      </>
      )
     })}
     {/* Showing Carts data using map ⬆ */}
