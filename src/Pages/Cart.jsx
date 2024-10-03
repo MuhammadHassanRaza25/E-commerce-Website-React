@@ -28,7 +28,7 @@ const showModal = ()=>{
     {/* Cart Heading */}
     <h1 className='headingCart flex flex-wrap justify-center items-center gap-2'><Link to={'/'}><ArrowLeftOutlined className='arrow mr-10 p-2 bg-gray-100 text-3xl text-cyan-400 rounded-full hover:text-gray-100 hover:bg-cyan-400 transition-all'></ArrowLeftOutlined></Link> <span className='text-black'>Shopping</span> Cart <img className='cartImg w-14' src={'https://cdn-icons-gif.flaticon.com/15713/15713014.gif'} alt="image"/></h1>
     
-    {/* total amount & quantity ⬇ */}
+    {/* Total amount & quantity ⬇ */}
       <div className='cartDetailsDiv flex flex-wrap justify-center gap-10 mb-14'>
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>Total Amount</h1>
@@ -45,7 +45,7 @@ const showModal = ()=>{
           <button onClick={showModal} className="btn mt-5 w-full text-white font-medium rounded-lg text-md px-5 py-3 text-center">Checkout</button>
         </div>
       </div>
-   {/* total amount & quantity ⬆ */}
+   {/* Total amount & quantity ⬆ */}
 
     {/* Modal Start */}
     <Modal centered title="Buy Now" open={isModalOpen}    
