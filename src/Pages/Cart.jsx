@@ -41,8 +41,8 @@ const showModal = ()=>{
         </div>
   
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
-          <h1 className='text-4xl font-bold text-center'>CheckOut</h1>
-          <button onClick={showModal} className="btn mt-5 w-full text-white font-medium rounded-lg text-md px-5 py-3 text-center">CheckOut</button>
+          <h1 className='text-4xl font-bold text-center'>Checkout 💳</h1>
+          <button onClick={showModal} className="btn mt-5 w-full text-white font-medium rounded-lg text-md px-5 py-3 text-center">Checkout</button>
         </div>
       </div>
    {/* total amount & quantity ⬆ */}
