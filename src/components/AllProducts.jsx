@@ -29,24 +29,24 @@ function AllProducts() {
                 setCategory(filteredCategory);  // set category to array.
       })
       .catch((err)=> console.log('Error=>', err))
-    }
-    
+   }   
+
   //checking data
   // {products.map((value)=>{
   //   console.log(value);
   // })
   // }
-  
+
   // call api function //
   useEffect(()=>{
     setLoading(false)
     fetchProducts()
   },[])
-  
+
   
   // Products Filter Functionality ⬇ //
   useEffect(() => {
-    let filtered = products;
+    let filtered = products;   
     if (selectedCategory) {
       filtered = filtered.filter((productData) =>(
         productData.category === selectedCategory
@@ -78,7 +78,7 @@ function AllProducts() {
   }
   // ⬆ Functions For get values of search input & select.⬆ //
 
-  
+
     return (
       <>
 
