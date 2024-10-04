@@ -51,7 +51,7 @@ const showModal = ()=>{
     <Modal centered title="Buy Now" open={isModalOpen}    
           onCancel={() => setIsModalOpen(false)}
           footer={null}>
-          <form>
+          <form >
           {/* inputs */}
            <div className="w-full mt-5">
              <div className="flex gap-5">
@@ -59,7 +59,6 @@ const showModal = ()=>{
                <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Email"/>
              </div>
              <div className="flex gap-5">
-               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="number" placeholder="Quantity"/>
                <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Location"/>
              </div>
            </div>
