@@ -49,6 +49,36 @@ const showModal = ()=>{
   };
 //Modal function End
 
+// form details to email ⬇
+const onSubmit = async (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  formData.append("access_key", "f305e195-a3c6-4fac-b7da-0ed612b0a3cc");
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      event.target.reset();
+      message.success("Order Placed Successfully")
+      setIsModalOpen(false);
+    } 
+    else{
+      console.log("Error", data);
+      message.error("Error")
+    }
+  } 
+  catch(error){
+    console.error('Error submitting form:', error);
+    message.error("Error In Submitting Form")
+  }
+};
+// form details to email ⬆
+
     return(
       <>
 
@@ -56,29 +86,34 @@ const showModal = ()=>{
          <Modal centered title="Buy Now" open={isModalOpen}    
           onCancel={() => setIsModalOpen(false)}
           footer={null}>
-          <form>
+          <form onSubmit={onSubmit}>
           {/* inputs */}
            <div className="w-full mt-5">
              <div className="flex gap-5">
-               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Name"/>
-               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Email"/>
+               <input name="name" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Name"/>
+               <input required name="email" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Email"/>
              </div>
              <div className="flex gap-5">
-               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="number" placeholder="Quantity"/>
-               <input className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Location"/>
+               <input required name="quantity" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="number" placeholder="Quantity"/>
+               <input required name="location" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Location"/>
              </div>
            </div>
 
-           {/* product short details */}
+           {/* product short details in inputs */}
            <div className="mb-3 mt-1 p-1 rounded-lg">
-             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Product Title: {products.title}</h1>
-             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Return Policy: {products.returnPolicy}</h1>
-             <h1 className="font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg">Price: <span className="text-green-500">$</span> {products.price}</h1>
+             <input readOnly type="text" name="Product Image" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
+                value={`Product Image: ${products.thumbnail}`}/>
+             <input readOnly type="text" name="product Title" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
+                 value={`Product Title: ${products.title}`}/>
+             <input readOnly type="text" name="return Policy" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
+                value={`Return Policy: ${products.returnPolicy}`}/>
+             <input readOnly type="text" name="price" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
+                value={`Price: $${products.price}`}/>
            </div>
 
            {/* order button */}
            <div className="flex justify-center">
-              <button className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+              <button type="submit" className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
             </div>
           </form>
         </Modal>
