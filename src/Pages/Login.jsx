@@ -52,7 +52,12 @@ function Login(){
       // The signed-in user info.
       const user = result.user;
       console.log("User=>", user);
-      
+
+      message.success('Login Successfully')
+      setTimeout(() => {
+       navigate('/')
+     }, 1000);
+
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     }).catch((error) => {
