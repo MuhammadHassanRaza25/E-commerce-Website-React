@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext.jsx";
 import { Avatar, Badge } from "antd";
 import { signOut } from "firebase/auth/cordova";
 import { auth } from "../utils/firebase";  
-import { ShopOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { ShopOutlined, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { CartContext } from '../context/CartContext'
 import {message} from 'antd';
 
@@ -94,7 +94,7 @@ const {cartItems} = useContext(CartContext)
            </div>
           </Link>
 
-          {/* login/logout button $ avatar ⬇*/}
+          {/* login/logout button & avatar ⬇*/}
             {user?.isLogin
              ?
              <>
@@ -105,7 +105,11 @@ const {cartItems} = useContext(CartContext)
                onClick={logoutUser}
                >Logout</button>
               </Link>
-              <Avatar src={user?.userInfo?.photoUrl} size="large"/>
+              <Avatar 
+              src={user?.userInfo?.photoUrl} 
+              style={{ backgroundColor: '#3a47d5', cursor: 'pointer' }} 
+              icon={<UserOutlined/>} 
+              />
               </div>
              </>
             :
@@ -117,7 +121,7 @@ const {cartItems} = useContext(CartContext)
             </div>
             </>
             }
-          {/* login/logout button $ avatar ⬆*/}
+          {/* login/logout button & avatar ⬆*/}
         </div>
         {/* Main Div ⬆ */}
 
