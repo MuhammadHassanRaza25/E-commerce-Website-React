@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
-import {message} from 'antd';
+import { message } from 'antd';
+import { AuthContext } from "../context/AuthContext";
 
 function Cards(props){
+
 // cart context se addCartItem function get kia hai.
   const {addCartItem, isItemAdded} = useContext(CartContext)
   
+// get user with the help of AuthContext
+const {user, setUser} = useContext(AuthContext);
+// console.log("user",user);
+
    return (
    <div className="card max-w-sm bg-white border-2 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">
     <div className="image">
@@ -43,10 +49,21 @@ function Cards(props){
            <Link to={`/products/${props.id}`} className="LINK">
               <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Product</button>
            </Link>
+
+           {/* add to cart button */}
+           {user?.isLogin 
+            ?
             <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
-             onClick={()=> {addCartItem(props.data) , message.success('Added to Cart Successfully')} }>
-             {isItemAdded(props.id)? `Added ${isItemAdded(props.id).added}` : 'Add to Cart'}
-            </button>
+            onClick={()=> {addCartItem(props.data) , message.success('Added to Cart Successfully')} }>
+            {isItemAdded(props.id)? `Added ${isItemAdded(props.id).added}` : 'Add to Cart'}
+           </button>
+            :
+            <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
+            onClick={()=> message.error('Please Login')}>
+              Add to Cart
+           </button>
+           }
+
         </div>
     </div>
   </div>

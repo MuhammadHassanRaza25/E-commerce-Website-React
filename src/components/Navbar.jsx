@@ -105,7 +105,7 @@ const {cartItems} = useContext(CartContext)
                onClick={logoutUser}
                >Logout</button>
               </Link>
-              <Avatar src={user?.userInfo.photoUrl} size="large"/>
+              <Avatar src={user?.userInfo?.photoUrl} size="large"/>
               </div>
              </>
             :

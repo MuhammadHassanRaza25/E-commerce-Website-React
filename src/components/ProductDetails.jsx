@@ -3,10 +3,15 @@ import { useParams } from "react-router";
 import Navbar from "./Navbar";
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
-import {message,Modal} from 'antd';
+import { message, Modal } from 'antd';
 import { ShoppingFilled } from "@ant-design/icons";
+import { AuthContext } from "../context/AuthContext";
 
 function ProductDetails(){
+
+// get user with the help of AuthContext
+const {user, setUser} = useContext(AuthContext);
+// console.log("user",user);
 
 // id functionality
 const { id } = useParams()
@@ -87,6 +92,7 @@ const onSubmit = async (event) => {
           onCancel={() => setIsModalOpen(false)}
           footer={null}>
           <form onSubmit={onSubmit}>
+
           {/* inputs */}
            <div className="w-full mt-5">
              <div className="flex gap-5">
@@ -112,9 +118,17 @@ const onSubmit = async (event) => {
            </div>
 
            {/* order button */}
+           {user?.isLogin 
+            ?
            <div className="flex justify-center">
               <button type="submit" className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
             </div>
+             :
+            <div className="flex justify-center">
+              <button onClick={()=> message.error('Please Login')} className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+            </div>
+          }
+
           </form>
         </Modal>
       {/* Modal End */}
@@ -123,6 +137,7 @@ const onSubmit = async (event) => {
         category={category}
        />
 
+      {/* Product Details Start */}
         <section className="text-gray-600 body-font overflow-hidden">
         <div className="detailContainer container p-6 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -254,15 +269,27 @@ const onSubmit = async (event) => {
                 <button onClick={showModal} className="detailCartbtn text-white font-medium py-2 px-7">
                    Buy Now
                 </button>
+
+                {/* add to cart button */}
+                {user?.isLogin
+                ?
                 <button className="detailCartbtn text-white font-medium py-2 px-7"
-                 onClick={()=> {addCartItem(products), message.success('Added to Cart Successfully')}}>
-                 {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
-                </button>
+                onClick={()=> {addCartItem(products), message.success('Added to Cart Successfully')}}>
+                {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
+               </button>
+               :
+               <button className="detailCartbtn text-white font-medium py-2 px-7"
+               onClick={()=> message.error('Please Login')}>
+                 Add to Cart
+              </button>
+              }
+
               </div>
             </div>
           </div>
         </div>
-      </section>    
+      </section>   
+      {/* Product Details End */} 
       </>  
     )
 }

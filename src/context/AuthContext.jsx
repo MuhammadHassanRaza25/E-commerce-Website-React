@@ -14,7 +14,8 @@ function AuthContextProvider({children}){
   // Handle user state changes    ====> react native fierebase website se lia hai.
   function onAuthChanged(user) {
       if(user){
-        setUser({isLogin: true, userInfo: {
+        setUser({isLogin: true, 
+          userInfo: {
             name: user?.displayName,
             photoUrl: user?.photoUrl,
             email: user?.email    //ye? isliye lagay h ke website crash na ho.

@@ -5,8 +5,13 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer'
 import {Modal, message} from 'antd';
 import { ShoppingFilled } from "@ant-design/icons";
+import { AuthContext } from '../context/AuthContext';
 
 function Cart(){
+
+// get user with the help of AuthContext
+const {user, setUser} = useContext(AuthContext);
+// console.log("user",user);
 
 // cart ke context se cartItems get kiye hain.
 const {cartItems, removeCartItem, addCartItem, minusCartquantity} = useContext(CartContext)
@@ -82,6 +87,7 @@ const onSubmit = async (event) => {
           onCancel={() => setIsModalOpen(false)}
           footer={null}>
           <form onSubmit={onSubmit}>
+
           {/* inputs */}
            <div className="w-full mt-5">
              <div className="flex gap-5">
@@ -101,10 +107,18 @@ const onSubmit = async (event) => {
                 value={`Total Quantity: ${totalQuantity}`}/> 
             </div>
 
-           {/* order button */}
-           <div className="flex justify-center">
-              <button className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
-            </div>
+            {/* order button */}
+             {user?.isLogin 
+              ?
+             <div className="flex justify-center">
+                <button type="submit" className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+              </div>
+               :
+              <div className="flex justify-center">
+                <button onClick={()=> message.error('Please Login')} className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+              </div>
+            }
+
           </form>
         </Modal>
        {/* Modal End */}
