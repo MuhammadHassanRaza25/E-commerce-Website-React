@@ -19,6 +19,7 @@ console.log("cartItems",cartItems);
 
 //total amount & quantity functionality
 const totalAmount = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity * Obj.price, 0)
+const totalAmountFinal = Math.floor(totalAmount) //without decimal price aygi.
 const totalQuantity = cartItems.reduce((totalVal,Obj)=> totalVal+Obj.quantity, 0)
 
 //Modal function Start
@@ -33,6 +34,14 @@ const onSubmit = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   formData.append("access_key", "f305e195-a3c6-4fac-b7da-0ed612b0a3cc");
+
+  // Product Details
+  let productDetails = cartItems.map(order => {
+    return `Product Image: ${order.thumbnail} \n Title: ${order.title} \n Price: ${order.price} \n`;
+  })
+
+  // Append product details to form data
+  formData.append("products", productDetails);
 
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
@@ -67,7 +76,7 @@ const onSubmit = async (event) => {
       <div className='cartDetailsDiv flex flex-wrap justify-center gap-10 mb-14'>
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
           <h1 className='text-4xl font-bold text-center'>Total Amount</h1>
-          <h2 className='text-2xl font-bold text-center mt-5'><span className="text-green-500">$</span>{totalAmount}</h2>
+          <h2 className='text-2xl font-bold text-center mt-5'><span className="text-green-500">$</span>{totalAmountFinal}</h2>
         </div>
   
         <div className='cartDiv mb-3 py-5 p-5 rounded-3xl w-80 border-2 border-gray-200'>
