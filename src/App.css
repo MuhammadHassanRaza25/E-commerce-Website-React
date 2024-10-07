@@ -151,14 +151,14 @@ option{
 .loginForm{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: white;
-  width: 33vw;
+  width: 30vw;
   border-radius: 13px;
   border: 1px solid lightgray;
 }
 .signupForm{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: white;
-  width: 33vw;
+  width: 30vw;
   border-radius: 13px;
   border: 1px solid lightgray;
 }
