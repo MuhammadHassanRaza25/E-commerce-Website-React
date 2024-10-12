@@ -127,7 +127,7 @@ option{
   border-radius: 10px;
   margin-top: 3%;
   width: 76% !important;
-  height: 75vh;
+  height: 76vh;
   overflow: scroll;
 }
 .detailContainer:hover{
@@ -135,6 +135,11 @@ option{
 }
 .detailContainer::-webkit-scrollbar{
   display: none;
+}
+.detailImg{
+  width: 300px !important;
+  height: 50vh !important;
+  margin-top: 5%;
 }
 .detailCartbtn{
   border-radius: 7px;
@@ -210,12 +215,14 @@ option{
   .detailContainer{
     margin-top: 5%;
     margin-bottom: 1%;
-    width: 90% !important;
+    width: 60% !important;
     height: 100vh !important;
+    display: flex !important;
   }
   .detailImg{
-    width: 300px !important;
-    height: 50vh !important;
+    width: 270px !important;
+    height: 40vh !important;
+    margin-top: 0% !important;
   }
   .navbar{
     padding-bottom: 0 !important;
@@ -257,6 +264,9 @@ option{
   }
   .signupForm{
     width: 90vw;
+  }
+  .detailContainer{
+    width: 80% !important;
   }
   .detailImg{
     width: 250px !important;
@@ -304,6 +314,7 @@ option{
   }
   .detailContainer{
     margin-top: 8%;
+    width: 85% !important;
   }
   .detailImg{
     width: 250px !important;
