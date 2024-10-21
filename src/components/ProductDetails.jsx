@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router";
 import Navbar from "./Navbar";
 import { CartContext } from '../context/CartContext'
@@ -6,43 +6,58 @@ import { useContext } from "react";
 import { message, Modal } from 'antd';
 import { ShoppingFilled } from "@ant-design/icons";
 import { AuthContext } from "../context/AuthContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../utils/firebase";
+import { useEffect } from "react";
 
 function ProductDetails(){
+// console.log(id);
+// useEffect(()=>{
+//     fetch(`https://dummyjson.com/products/${id}`)
+//     .then(res => res.json())
+//     .then((data)=>{
+//        setProducts(data)    
+//     })
+//     .catch((err)=> console.log('error==>', err))
+// },[id])
+
+
+// navbar with only login/signup for detail page.
+// const [category, setCategory] = useState([])
+// const fetchProducts = ()=>{
+//     fetch('https://dummyjson.com/products')
+//     .then((res) => res.json())
+//     .then((data) =>{
+//       const allCategory = data.products.map((all) => all.category);  //get category
+//               const filteredCategory = [...new Set(allCategory)];   // filter category
+//               setCategory(filteredCategory);  // set category to array.
+//     })
+//     .catch((err)=> console.log('Error=>', err))
+//   }
+//     // call api function //
+//     useEffect(()=>{
+//       fetchProducts()
+//     },[])
+
 
 // get user with the help of AuthContext
 const {user, setUser} = useContext(AuthContext);
 // console.log("user",user);
 
-// id functionality
+// get product id
 const { id } = useParams()
-const [products,setProducts]= useState('')
-console.log(products.id);
+const [product,setProduct]= useState({})
+
+// get a single document from firestore collection
+let getDetailData = async ()=>{
+const docRef = doc(db, "products", id);
+const docSnap = await getDoc(docRef);
+  setProduct({id, ...docSnap.data()})   // set single product data with id. id isliye sath set ki hai taky button ko addtocart hone ke bad added karsakyn.
+}
 useEffect(()=>{
-    fetch(`https://dummyjson.com/products/${id}`)
-    .then(res => res.json())
-    .then((data)=>{
-       setProducts(data)    
-    })
-    .catch((err)=> console.log('error==>', err))
-},[id])
-
-
-// navbar with only login/signup for detail page.
-const [category, setCategory] = useState([])
-const fetchProducts = ()=>{
-    fetch('https://dummyjson.com/products')
-    .then((res) => res.json())
-    .then((data) =>{
-      const allCategory = data.products.map((all) => all.category);  //get category
-              const filteredCategory = [...new Set(allCategory)];   // filter category
-              setCategory(filteredCategory);  // set category to array.
-    })
-    .catch((err)=> console.log('Error=>', err))
-  }
-    // call api function //
-    useEffect(()=>{
-      fetchProducts()
-    },[])
+  getDetailData()
+},[])
+console.log(product);
 
 // cart context se addCartItem function get kia hai.
 const {addCartItem, isItemAdded} = useContext(CartContext)
@@ -108,13 +123,13 @@ const onSubmit = async (event) => {
            {/* product short details in inputs */}
            <div className="mb-3 mt-1 p-1 rounded-lg">
              <input readOnly type="text" name="Product Image" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
-                value={`Product Image: ${products.thumbnail}`}/>
+                value={`Product Image: ${product.thumbnail}`}/>
              <input readOnly type="text" name="product Title" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
-                 value={`Product Title: ${products.title}`}/>
+                 value={`Product Title: ${product.title}`}/>
              <input readOnly type="text" name="return Policy" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
-                value={`Return Policy: ${products.returnPolicy}`}/>
+                value={`Return Policy: ${product.returnPolicy}`}/>
              <input readOnly type="text" name="price" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
-                value={`Price: $${products.price}`}/>
+                value={`Price: $${product.price}`}/>
            </div>
 
            {/* order button */}
@@ -133,9 +148,7 @@ const onSubmit = async (event) => {
         </Modal>
       {/* Modal End */}
 
-       <Navbar
-        category={category}
-       />
+       <Navbar/>
 
       {/* Product Details Start */}
         <section className="text-gray-600 body-font overflow-hidden">
@@ -143,15 +156,15 @@ const onSubmit = async (event) => {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              className="detailImg lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src={products.thumbnail}
+              className="detailImg h-64 rounded"
+              src={product.productImage}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              {products.brand}
+              {product.brand}
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              {products.title}
+              {product.title}
               </h1>
               <div className="flex mb-4">
                 <span className="flex items-center">
@@ -210,7 +223,7 @@ const onSubmit = async (event) => {
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
-                  <span className="text-gray-600 ml-3">{products.rating}</span>
+                  <span className="text-gray-600 ml-3">{product.rating}</span>
                 </span>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
                   <a href="https://github.com/MuhammadHassanRaza25" target="_blank" className="text-gray-500 hover:text-gray-900">
@@ -231,11 +244,11 @@ const onSubmit = async (event) => {
                 </span>
               </div>
               <p className="leading-relaxed">
-              {products.description}
+              {product.description}
               </p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
-                  <span className="mr-3 font-medium text-black">Return Policy: {products.returnPolicy}</span>
+                  <span className="mr-3 font-medium text-black">Return Policy: {product.returnPolicy}</span>
                 </div>
                 <div className="flex ml-6 items-center">
                   <span className="mr-3 font-medium text-black">Size</span>
@@ -264,7 +277,7 @@ const onSubmit = async (event) => {
               </div>
               <div className="detailBtnPriceDiv flex gap-2 items-center w-96">
                 <span className="title-font font-medium text-xl mr-4 text-gray-900">
-                  <span className="text-green-500">$</span> {products.price}
+                  <span className="text-green-500">$</span> {product.price}
                 </span>
                 <button onClick={showModal} className="detailCartbtn text-white font-medium py-2 px-7">
                    Buy Now
@@ -274,7 +287,7 @@ const onSubmit = async (event) => {
                 {user?.isLogin
                 ?
                 <button className="detailCartbtn text-white font-medium py-2 px-7"
-                onClick={()=> {addCartItem(products), message.success('Added to Cart Successfully')}}>
+                onClick={()=> {addCartItem(product), message.success('Added to Cart Successfully')}}>
                 {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
                </button>
                :

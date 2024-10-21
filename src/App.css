@@ -29,23 +29,26 @@
   60%,100%{background-position: 0 50%, 0 100%,50% 100%,100% 100%,100% 50%,100% 0,50% 0,0 0,  50% 50% }
 }
 
-.navbar{
-  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
+.scrollbar::-webkit-scrollbar{
+  display: none;
+}
+/* .navbar{ */
+  /* background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%); */
   /* position: sticky; */
   /* top: 0; */
   /* z-index: 99999; */
-}
+/* } */
 .nav-heading{
   color: whitesmoke;
 }
 
 input:focus::placeholder{
-  color: #01c7f3;
+  color: #3a47d5;
   transition: all 0.5s;
   padding-left: 3%;
 }
 option{
-  color: #00d2ff;
+  color: #3a47d5;
   font-weight: 600;
 }
 
@@ -109,10 +112,15 @@ option{
 .btn{
   width: 50%;
   background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
+  /* background-color: #2535e8; */
   transition: all 0.5s;
 }
 .btn:hover{
   box-shadow: 0px 0px 4px #3a47d5;
+  /* background-color: #00d2ff; */
+  /* border: 1px solid #2535e8;
+  color: #2535e8;
+  background-color: white; */
   transition: all 0.5s;
 }
 .LINK{
@@ -127,7 +135,7 @@ option{
   border-radius: 10px;
   margin-top: 3%;
   width: 76% !important;
-  height: 76vh;
+  height: 70vh;
   overflow: scroll;
 }
 .detailContainer:hover{
@@ -138,8 +146,8 @@ option{
 }
 .detailImg{
   width: 300px !important;
-  height: 50vh !important;
-  margin-top: 5%;
+  height: 30vh !important;
+  margin-top: 10%;
 }
 .detailCartbtn{
   border-radius: 7px;
@@ -196,6 +204,25 @@ option{
 /* Login/Signup Form Styling End */
 
 /* Responsiveness Start */
+@media(max-width:1024px){
+  .adminContainer1{
+    width: 270px !important;
+  }
+  .adminHeading{
+    font-size: 13.5px !important;
+  }
+  .adminImg{
+    width: 200px;
+  }
+  .adminBtn{
+    width: 210px !important;
+    font-size: 15px !important;
+  }
+  .adminBtnadd{
+    width: 140px !important;
+    font-size: 15px !important;
+  }
+}
 @media(max-width:1200px){
   .detailContainer{
     width: 100% !important;
@@ -220,8 +247,6 @@ option{
     display: flex !important;
   }
   .detailImg{
-    width: 270px !important;
-    height: 40vh !important;
     margin-top: 0% !important;
   }
   .navbar{
@@ -268,10 +293,6 @@ option{
   .detailContainer{
     width: 80% !important;
   }
-  .detailImg{
-    width: 250px !important;
-    height: 30vh !important;
-  }
 }
 @media(max-width:430px){
   .nav-heading{
@@ -304,9 +325,9 @@ option{
   .arrow{
     margin-right: 0% !important;
   }
-  .cartImg{
+  /* .cartImg{
     width: 40px !important;
-  }
+  } */
   .card{
     margin-bottom: 8%;
     height: 73.5vh;

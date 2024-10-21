@@ -141,7 +141,7 @@ const onSubmit = async (event) => {
           <div className="cartDiv rounded-3xl border-2 border-gray-200 hover:border-cyan-400 p-4 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 ">
             <div className="col-span-12 lg:col-span-2">
               <img
-                src={data.thumbnail}
+                src={data.productImage}
                 alt="image"
                 className="cartImg w-full lg:w-[180px] rounded-lg object-cover"
               />

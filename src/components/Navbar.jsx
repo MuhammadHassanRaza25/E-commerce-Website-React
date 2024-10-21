@@ -18,7 +18,7 @@ const toggleNavbar = () => {
 
 // get user with the help of AuthContext
 const {user, setUser} = useContext(AuthContext);
-console.log("user",user);
+// console.log("user",user);
 
 //logout function
 const logoutUser = async()=>{
@@ -31,8 +31,8 @@ const {cartItems} = useContext(CartContext)
 
     return(
      <>
-       {/* Navbar Start */}
-         <nav className="navbar flex items-center flex-wrap justify-between px-5 py-3 border border-b-gray-400">
+  {/* Navbar Start */}
+  <nav className="navbar bg-blue-600 flex items-center flex-wrap justify-between px-5 py-3 border border-b-gray-400">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store <ShopOutlined></ShopOutlined></span></Link>
         </div>
@@ -73,14 +73,26 @@ const {cartItems} = useContext(CartContext)
               <option className="font-semibold" value="Select Category" disabled>
                 Select Category
               </option>
-              <option className="font-semibold" value="">
+              <option value="">
                 All Products
               </option>
-              {category.map((value, index) => ( 
+              <option>Electronics</option>
+              <option>Furniture</option>
+              <option>Watches</option>
+              <option>Baby Products</option>
+              <option>Men Clothes</option>
+              <option>Women Clothes</option>
+              <option>Beauty</option>
+              <option>Home Decoration</option>
+              <option>Sun Glasses</option>
+              <option>Groceries</option>
+              <option>Fragrances</option>
+              <option>Food</option>
+              {/* {category.map((value, index) => ( 
                 <option value={value} key={index}>
-                  {value[0].toUpperCase() + value.slice(1)}  {/* value get karke first latter upperCase kia h. */}
+                  {value[0].toUpperCase() + value.slice(1)}
                 </option>
-              ))}
+              ))} */}
             </select>
           </div>
 
@@ -98,7 +110,7 @@ const {cartItems} = useContext(CartContext)
             {user?.isLogin
              ?
              <>
-             <div className="btnOrAvatarDiv">
+             <div className="btnOrAvatarDiv flex items-center">
               <Link to={"/Login"}>
                <button 
                className="bg-white ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
@@ -107,7 +119,7 @@ const {cartItems} = useContext(CartContext)
               </Link>
               <Avatar 
               src={user?.userInfo?.photoUrl} 
-              style={{ backgroundColor: '#3a47d5', cursor: 'pointer' }} 
+              style={{ backgroundColor: 'orange', cursor: 'pointer' }} 
               icon={<UserOutlined/>} 
               />
               </div>

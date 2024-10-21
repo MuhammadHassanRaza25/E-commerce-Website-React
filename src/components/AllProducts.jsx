@@ -4,6 +4,9 @@ import Footer from './Footer'
 import Cards from './Cards'
 import Navbar from './Navbar'
 import { Carousel } from "antd";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from '../utils/firebase'
+import { data } from 'autoprefixer'
 
 // slider image style
 const sliderImg = {
@@ -11,25 +14,19 @@ const sliderImg = {
   width: '100vw'
 };
 
-function AllProducts() {
-  const [products, setProducts] = useState([])
-  const [category, setCategory] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState("")
-  const [searchProducts, setSeachProducts] = useState("")
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true)
-  
-  const fetchProducts = ()=>{
-      fetch('https://dummyjson.com/products')
-      .then((res) => res.json())
-      .then((data) =>{
-        setProducts(data.products)   // set products to array.
-        const allCategory = data.products.map((all) => all.category);  //get category
-                const filteredCategory = [...new Set(allCategory)];   // filter category
-                setCategory(filteredCategory);  // set category to array.
-      })
-      .catch((err)=> console.log('Error=>', err))
-   }   
+function AllProducts() { 
+  // const [category, setCategory] = useState([])
+  // const fetchProducts = ()=>{
+  //     fetch('https://dummyjson.com/products')
+  //     .then((res) => res.json())
+  //     .then((data) =>{
+  //       setProducts(data.products)   // set products to array.
+  //       const allCategory = data.products.map((all) => all.category);  //get category
+  //               const filteredCategory = [...new Set(allCategory)];   // filter category
+  //               setCategory(filteredCategory);  // set category to array.
+  //     })
+  //     .catch((err)=> console.log('Error=>', err))
+  //  }   
 
   //checking data
   // {products.map((value)=>{
@@ -38,12 +35,36 @@ function AllProducts() {
   // }
 
   // call api function //
-  useEffect(()=>{
-    setLoading(false)
-    fetchProducts()
-  },[])
+  // useEffect(()=>{
+  //   setLoading(false)
+  //   fetchProducts()
+  // },[])
 
+
+  const [products, setProducts] = useState([])  //isme db se data get kia h.
+  const [selectedCategory, setSelectedCategory] = useState("")
+  const [searchProducts, setSeachProducts] = useState("")
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(true)
   
+
+  // get Real-time product data from firestore collection
+  useEffect(() => {
+		const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
+			const productsData = snapshot.docs.map((doc) => ({
+				id: doc.id,
+				...doc.data(),
+			}));
+			setProducts(productsData)  // set products data in useState
+      // console.log('productsData',productsData);
+      setLoading(false)
+		});
+
+		// Cleanup the listener when the component is unmounted
+		return () => unsubscribe();
+	}, []);
+
+
   // Products Filter Functionality ⬇ //
   useEffect(() => {
     let filtered = products;   
@@ -62,7 +83,7 @@ function AllProducts() {
   
   //Summary: Simple hamny (filtered varible) main products leliye phir unko filter() karke products ka data lelia.
   // then if ki conditions main ushi (filtered varible) ko update kia or conditions lagayin.
-  // at the last setFilteredProducts(filtered); means (filtered varible) ko useState main push krdia. then ma lagake cards ka data show krdia.
+  // at the last setFilteredProducts(filtered); means (filtered varible) ko useState main push krdia. then map lagake cards ka data show krdia.
   // Products Filter Functionality ⬆ //
   
   
@@ -96,7 +117,7 @@ function AllProducts() {
           searchProducts={searchProducts}
           selectedCategoryFunc={selectedCategoryFunc}
           selectedCategory={selectedCategory}
-          category={category}
+          // category={category}
           />
           {/* Navbar End */}
 
@@ -107,9 +128,6 @@ function AllProducts() {
             </div>
             <div>
                <img className='sliderImage'  style={sliderImg} src="https://muhammadhassanraza25.github.io/Hassan-Raza-Store/images/img2.jpg" alt="image" />
-            </div>
-            <div>
-               <img className='sliderImage'  style={sliderImg} src="https://nofany.org/wp-content/uploads/2023/07/chantal-garnier-910GanwBoew-unsplash-scaled.jpg" alt="image" />
             </div>
             <div>
                 <img className='sliderImage' style={sliderImg} src="https://t4.ftcdn.net/jpg/03/45/73/61/360_F_345736111_up8XDxSYwaoOfSC88vQTPTpA3QhI3OSn.jpg" alt="image" />
@@ -125,7 +143,7 @@ function AllProducts() {
            {filteredProducts.map((value)=>(
               <Cards
               category={value.category}
-              images={value.thumbnail}
+              images={value.productImage}
               description={value.description}
               price={value.price}
               title={value.title}
