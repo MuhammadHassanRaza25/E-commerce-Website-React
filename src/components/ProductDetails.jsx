@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { message, Modal } from 'antd';
 import { ShoppingFilled } from "@ant-design/icons";
 import { AuthContext } from "../context/AuthContext";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, addDoc, collection } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { useEffect } from "react";
 
@@ -46,9 +46,21 @@ const {user, setUser} = useContext(AuthContext);
 
 // get product id
 const { id } = useParams()
-const [product,setProduct]= useState({})
+const [product,setProduct]= useState({})  //get data from db.
+const [title, setTitle] = useState("")
+const [category, setCategory] = useState("")
+const [returnPolicy, setReturnPolicy] = useState("") 
+const [price, setPrice] = useState("")
 
-// get a single document from firestore collection
+useEffect(()=>{  // ye data shipped products ki collection main add hoga.
+  setTitle(product.title)
+  setCategory(product.category)
+  setPrice(product.price)
+  setReturnPolicy(product.returnPolicy)
+},[product])
+
+
+// get a single document data from firestore collection
 let getDetailData = async ()=>{
 const docRef = doc(db, "products", id);
 const docSnap = await getDoc(docRef);
@@ -57,7 +69,8 @@ const docSnap = await getDoc(docRef);
 useEffect(()=>{
   getDetailData()
 },[])
-console.log('product', product);
+// console.log('product', product);
+
 
 // cart context se addCartItem function get kia hai.
 const {addCartItem, isItemAdded} = useContext(CartContext)
@@ -86,6 +99,18 @@ const onSubmit = async (event) => {
       event.target.reset();
       message.success("Order Placed Successfully")
       setIsModalOpen(false);
+
+      // create a new collection in firestore for shipped products.
+      // add products to firestore
+       addDoc(collection(db, "allOrders"), {
+        title: title,
+        category: category,
+        returnPolicy: returnPolicy,
+        price: price,
+      }).then(()=>{
+        console.log('Data Added to db')
+      })
+
     } 
     else{
       console.log("Error", data);
@@ -123,9 +148,11 @@ const onSubmit = async (event) => {
            {/* product short details in inputs */}
            <div className="mb-3 mt-1 p-1 rounded-lg">
              <input readOnly type="text" name="Product Image" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
-                value={`Product Image: ${product.thumbnail}`}/>
-             <input readOnly type="text" name="product Title" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
-                 value={`Product Title: ${product.title}`}/>
+                value={`Product Image: ${product.productImage}`}/>
+              <input readOnly type="text" name="product Title" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
+                value={`Product Title: ${product.title}`}/>
+              <input readOnly type="text" name="Product Category" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
+                value={`Product Category: ${product.category}`}/>
              <input readOnly type="text" name="return Policy" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 
                 value={`Return Policy: ${product.returnPolicy}`}/>
              <input readOnly type="text" name="price" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg" 

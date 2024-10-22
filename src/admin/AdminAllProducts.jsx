@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../utils/firebase.js";
-import { BarChartOutlined, DeleteOutlined, FieldTimeOutlined, ShopOutlined, ShoppingOutlined, TruckOutlined, UserOutlined } from "@ant-design/icons";
+import { BarChartOutlined, DeleteOutlined, ShopOutlined, ShoppingOutlined, TruckOutlined, UserOutlined } from "@ant-design/icons";
 import Footer from "../components/Footer.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -48,11 +48,10 @@ import { message } from "antd";
 
             {/* Admin Panel Start */}
              <div className="flex">
-                <div className="adminContainer1 flex flex-col pt-20 bg-white justify-start items-start w-96 h-[88vh]">
+                <div className="adminContainer1 flex flex-col pt-24 bg-white justify-start items-start w-96 h-[88vh]">
                   <Link to={'/admindashboard26'} className="w-full"><h1 className="adminHeading mb-10 pl-8 text-blue-800 bg-gray-50 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl"><BarChartOutlined className="text-2xl"/> Admin Dashboard</h1></Link>
                   <Link to={'/AdminAllProducts'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 flex items-center gap-4 bg-blue-50 text-blue-800 border-r-4 border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><ShoppingOutlined className="text-2xl"/> All Products</button></Link>
-                  <Link to={'/AdminPendingProducts'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 hover:border-blue-50 hover:text-blue-700 flex items-center gap-4 focus:bg-blue-50 focus:text-blue-800 border-r-4 border-white focus:border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><FieldTimeOutlined className="text-2xl"/> Pending Orders</button></Link>
-                  <Link to={'/AdminShippedProducts'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 hover:border-blue-50 hover:text-blue-700 flex items-center gap-4 focus:bg-blue-50 focus:text-blue-800 border-r-4 border-white focus:border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><TruckOutlined className="text-2xl"/> Shipped Orders</button></Link>
+                  <Link to={'/AdminAllOrders'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 hover:border-blue-50 hover:text-blue-700 flex items-center gap-4 focus:bg-blue-50 focus:text-blue-800 border-r-4 border-white focus:border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><TruckOutlined className="text-2xl"/> All Orders</button></Link>
                 </div>
             
                    <div className="bg-gray-100 w-full h-[88vh] p-10"> 

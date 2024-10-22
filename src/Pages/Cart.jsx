@@ -37,7 +37,7 @@ const onSubmit = async (event) => {
 
   // Product Details
   let productDetails = cartItems.map(order => {
-    return `Product Image: ${order.thumbnail} \n Title: ${order.title} \n Price: ${order.price} \n`;
+    return `Product Image: ${order.productImage} \n Title: ${order.title} \n Price: ${order.price} \n`;
   })
 
   // Append product details to form data
