@@ -77,7 +77,7 @@ import { message } from "antd";
                                      <h1 className="scrollbar h-10 text-start w-96 pl-5 overflow-scroll">${data.price}</h1>
                                      <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.category}</h1>
                                      <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.returnPolicy}</h1>
-                                     <h1 className="scrollbar h-10 text-center w-full overflow-scroll"><DeleteOutlined onClick={()=> deleteProduct(data.id)} className="bg-red-50 text-red-500 hover:text-white hover:bg-red-400 px-3 py-1.5 text-lg rounded-md"/></h1>
+                                     <h1 className="scrollbar h-10 text-center w-full overflow-scroll"><DeleteOutlined onClick={()=> deleteProduct(data.id)} className="transitionBtn bg-red-50 text-red-500 hover:text-white hover:bg-red-400 px-3 py-1.5 text-lg rounded-md"/></h1>
                                  </div>
                                  </>
                              )

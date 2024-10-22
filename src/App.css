@@ -32,6 +32,9 @@
 .scrollbar::-webkit-scrollbar{
   display: none;
 }
+.transitionBtn{
+  transition: all 0.3s;
+}
 /* .navbar{ */
   /* background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%); */
   /* position: sticky; */
@@ -99,7 +102,7 @@ option{
   justify-content: center;
 }
 .image img{
-  width: 280px;
+  width: 100%;
 }
 .desc{
   height: 12vh;

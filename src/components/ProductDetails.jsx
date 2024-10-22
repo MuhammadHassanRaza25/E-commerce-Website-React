@@ -52,12 +52,12 @@ const [product,setProduct]= useState({})
 let getDetailData = async ()=>{
 const docRef = doc(db, "products", id);
 const docSnap = await getDoc(docRef);
-  setProduct({id, ...docSnap.data()})   // set single product data with id. id isliye sath set ki hai taky button ko addtocart hone ke bad added karsakyn.
+  setProduct({id, ...docSnap.data()})   // set single product data with id in useState Object. id isliye sath set ki hai taky button ko addtocart hone ke bad added karsakyn.
 }
 useEffect(()=>{
   getDetailData()
 },[])
-console.log(product);
+console.log('product', product);
 
 // cart context se addCartItem function get kia hai.
 const {addCartItem, isItemAdded} = useContext(CartContext)

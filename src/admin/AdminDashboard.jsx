@@ -76,7 +76,7 @@ const showModal = ()=>{
     return(
         <>
         {/* Modal Start */}
-        <Modal centered title="Buy Now" open={isModalOpen}    
+        <Modal centered title="Add Product" open={isModalOpen}    
           onCancel={() => setIsModalOpen(false)}
           footer={null}>
 
