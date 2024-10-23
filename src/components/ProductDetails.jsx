@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import Navbar from "./Navbar";
 import { CartContext } from '../context/CartContext'
 import { useContext } from "react";
-import { message, Modal } from 'antd';
+import { Image, message, Modal } from 'antd';
 import { ShoppingFilled } from "@ant-design/icons";
 import { AuthContext } from "../context/AuthContext";
 import { doc, getDoc, addDoc, collection } from "firebase/firestore";
@@ -181,7 +181,7 @@ const onSubmit = async (event) => {
         <section className="text-gray-600 body-font overflow-hidden">
         <div className="detailContainer container p-6 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <img
+            <Image
               alt="ecommerce"
               className="detailImg h-64 rounded"
               src={product.productImage}
