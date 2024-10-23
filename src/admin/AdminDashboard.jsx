@@ -90,6 +90,7 @@ const showModal = ()=>{
                 <select onChange={(e)=> setCategory(e.target.value)} className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3">
                    <option disabled selected>Select Cateory</option>
                    <option>Electronics</option>
+                   <option>Vehicles</option>
                    <option>Furniture</option>
                    <option>Watches</option>
                    <option>Baby Products</option>
@@ -140,7 +141,7 @@ const showModal = ()=>{
               {/* Navbar End */}
 
             {/* Admin Panel Start */}
-             <div className="flex">
+             <div className="adminDash flex">
                 <div className="adminContainer1 flex flex-col pt-24 bg-white justify-start items-start w-96 h-[88vh]">
                   <h1 className="adminHeading mb-10 pl-8 text-blue-800 bg-gray-50 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl"><BarChartOutlined className="text-2xl"/> Admin Dashboard</h1>
                   <Link to={'/AdminAllProducts'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 hover:border-blue-50 hover:text-blue-700 flex items-center gap-4 focus:bg-blue-50 focus:text-blue-800 border-r-4 border-white focus:border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><ShoppingOutlined className="text-2xl"/> All Products</button></Link>

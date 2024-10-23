@@ -77,6 +77,7 @@ const {cartItems} = useContext(CartContext)
                 All Products
               </option>
               <option>Electronics</option>
+              <option>Vehicles</option>
               <option>Furniture</option>
               <option>Watches</option>
               <option>Baby Products</option>

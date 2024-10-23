@@ -15,8 +15,8 @@ const {user, setUser} = useContext(AuthContext);
 
    return (
    <div className="card max-w-sm bg-white border-2 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">
-    <div className="image">
-        <img className="p-8 rounded-t-lg" src={props.images} alt="product image" />
+    <div className="image mb-5">
+        <img className="rounded-t-xl" src={props.images} alt="product image" />
    </div>
     <div className="px-5 pb-5">
         <h5 className="cardTitle text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.title}</h5>

@@ -103,6 +103,7 @@ option{
 }
 .image img{
   width: 100%;
+  height: 40vh;
 }
 .desc{
   height: 12vh;
@@ -273,6 +274,26 @@ option{
   .btnOrAvatarDiv{
     display: flex;
     justify-content: center;
+  }
+}
+/* admin panel responsiveness */
+@media(max-width:950px){
+  .adminDash{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .adminContainer1{
+    display: flex !important;
+    width: 100% !important;
+    height: 62vh !important;
+  }
+  .adminContainer2{
+    display: flex !important;
+    width: 100% !important;
+    height: 50vh !important;
+  }
+  .adminBtn{
+    width: 99% !important;
   }
 }
 @media(max-width:600px){
