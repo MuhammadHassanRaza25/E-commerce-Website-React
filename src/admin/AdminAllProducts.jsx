@@ -5,7 +5,9 @@ import { BarChartOutlined, DeleteOutlined, ShopOutlined, ShoppingOutlined, Truck
 import Footer from "../components/Footer.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
-import { message } from "antd";
+import { message, Space } from "antd";
+import Modal from "antd/es/modal/Modal.js";
+import Avatar from "antd/es/avatar/avatar.js";
 
  function AdminAllProducts(){
 
@@ -31,10 +33,68 @@ import { message } from "antd";
   let deleteProduct = async (id)=>{
     await deleteDoc(doc(db, "products", id), message.success('Product Deleted Successfully'));
   }
+  
 
+  //Modal function Start
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = ()=>{
+  setIsModalOpen(true);
+  };
+   //Modal function End
+
+  //admin login/logout functionality ⬇
+  const [adminEmailInp, setAdminEmailInp] = useState("")
+  const [adminPassInp, setAdminPassInp] = useState("")
+  const [adminEmail, setAdminEmail] = useState("")
+  const [adminPass, setAdminPass] = useState("")
+
+  useEffect(()=>{
+    setAdminEmail("admin@gmail.com")
+    setAdminPass("admin@1226")
+  },[])
+
+  var get = localStorage.getItem('isAdmin');
+  let convertBooleanType = JSON.parse(get)
+  const [isAdmin, setIsAdmin] = useState(convertBooleanType)
+
+  let adminLogin = ()=>{
+    if(adminEmailInp == adminEmail && adminPassInp == adminPass){
+      message.success("Admin Login Successfully")
+      setIsModalOpen(false)
+      setIsAdmin(true)
+      localStorage.setItem('isAdmin', 'true');
+    }
+    else{
+      message.error("Wrong Email/Password")
+    }
+  }
+  
+  let adminLogout = ()=>{
+    message.success("Admin Logout Successfully")
+    setIsAdmin(false)
+    localStorage.setItem('isAdmin', 'false');
+  }
+  // console.log('isAdmin', isAdmin);
+  //admin login/logout functionality ⬆
 
     return(
         <>
+       {/* Modal Start */}
+       <Modal centered title="Admin Login" open={isModalOpen}    
+          onCancel={() => setIsModalOpen(false)}
+          footer={null}>
+
+          {/* inputs */}
+           <div className="w-full mt-5">
+             <div className="flex flex-col">
+                 <input onChange={(e)=> setAdminEmailInp(e.target.value)} className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-2" type="text" placeholder="Admin Email" />
+                 <input onChange={(e)=> setAdminPassInp(e.target.value)} className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="password" placeholder="Admin Password" />
+                 <button onClick={adminLogin} className="mt-2 bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 rounded-lg w-full font-bold text-center text-lg">Login</button>
+             </div>
+           </div>
+        </Modal>
+        {/* Modal End */}
+
       {/* Admin Panel Work Start */}
          <div className="adminPanel bg-slate-600"> {/* Full body conatiner div */}
 
@@ -43,6 +103,26 @@ import { message } from "antd";
                <div className="flex items-center p-4 flex-shrink-0 text-white mr-6">
                  <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store <ShopOutlined></ShopOutlined></span></Link>
                </div>
+
+               <div className="btnOrAvatarDiv flex items-center">
+                  {isAdmin?
+                  <>
+                     <Space size={16} wrap>
+                      <Avatar size={40} style={{ backgroundColor: 'white', color: '#f56a00' }} src={'https://cdn3d.iconscout.com/3d/premium/thumb/businessman-3d-icon-download-in-png-blend-fbx-gltf-file-formats--employee-manager-worker-business-avatar-pack-people-icons-8266515.png?f=webp'} />
+                     </Space>
+                     <button 
+                       onClick={adminLogout}
+                       className="bg-white ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
+                     >Logout</button>
+                     </>
+                    :
+                     <button 
+                       onClick={showModal}
+                       className="bg-white ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
+                     >Login</button>
+                  }
+              </div>
+
                </nav>
               {/* Navbar End */}
 
@@ -56,9 +136,61 @@ import { message } from "antd";
             
                    <div className="bg-gray-100 w-full h-[88vh] p-10"> 
                      <h1 className='text-blue-600 mb-6 -mt-2 text-3xl font-bold flex justify-center items-center gap-2'><span className='text-black'>All</span> Products <ShoppingOutlined className="text-2xl"/></h1>
-                     
+                     {/* admin login nahi hoga to delete ka btn show nhi hoga. */}
+                     {isAdmin ?( 
+                        <div className="scrollbar drop-shadow-xl w-full bg-white h-[68vh] overflow-scroll">
+                           
+                         <div className="flex justify-between bg-blue-600 text-white font-bold p-3">
+                             <h1 className="scrollbar overflow-x-scroll text-start w-full">Product Title</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-start w-96 pl-5">Price</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-center w-full">Category</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-center w-full">Return Policy</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-center w-full">Delete Product</h1>
+                         </div>
+
+                         {productsFromDb.map((data)=>{
+                           return(
+                             <>
+                               <div className="flex justify-between bg-white text-black font-bold p-3">
+                                   <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.title}</h1>
+                                   <h1 className="scrollbar h-10 text-start w-96 pl-5 overflow-scroll">${data.price}</h1>
+                                   <h1 className="scrollbar h-10 text-center w-full overflow-scroll">{data.category}</h1>
+                                   <h1 className="scrollbar h-10 text-center w-full overflow-scroll">{data.returnPolicy}</h1>
+                                   <h1 className="scrollbar h-10 text-center w-full overflow-scroll"><DeleteOutlined onClick={()=> deleteProduct(data.id)} className="transitionBtn bg-red-50 text-red-500 hover:text-white hover:bg-red-400 px-3 py-1.5 text-lg rounded-md"/></h1>
+                               </div>
+                               </>
+                           )
+                         })}
+                       </div> 
+                       )
+                       :(
+                        <div className="scrollbar drop-shadow-xl w-full bg-white h-[68vh] overflow-scroll">
+                           
+                         <div className="flex justify-between bg-blue-600 text-white font-bold p-3">
+                             <h1 className="scrollbar overflow-x-scroll text-start w-full">Product Title</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-start w-full pl-5">Price</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-start w-full">Category</h1>
+                             <h1 className="scrollbar overflow-x-scroll text-start w-96">Return Policy</h1>
+                         </div>
+
+                         {productsFromDb.map((data)=>{
+                           return(
+                             <>
+                               <div className="flex justify-between bg-white text-black font-bold p-3">
+                                   <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.title}</h1>
+                                   <h1 className="scrollbar h-10 text-start w-full pl-5 overflow-scroll">${data.price}</h1>
+                                   <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.category}</h1>
+                                   <h1 className="scrollbar h-10 text-start w-96 overflow-scroll ">{data.returnPolicy}</h1>
+                               </div>
+                               </>
+                           )
+                         })}
+                       </div> 
+                       )
+                       }
+
                      {/* Table Work get data from db */}
-                      <div className="scrollbar drop-shadow-xl w-full bg-white h-[68vh] overflow-scroll">
+                      {/* <div className="scrollbar drop-shadow-xl w-full bg-white h-[68vh] overflow-scroll">
                            
                            <div className="flex justify-between bg-blue-600 text-white font-bold p-3">
                                <h1 className="scrollbar overflow-x-scroll text-start w-full">Product Title</h1>
@@ -81,7 +213,7 @@ import { message } from "antd";
                                  </>
                              )
                            })}
-                     </div> 
+                     </div>  */}
                      {/* Table Work get data from db ⬆ */}
                   </div>
 
