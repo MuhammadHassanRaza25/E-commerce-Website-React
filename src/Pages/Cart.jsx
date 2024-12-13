@@ -70,7 +70,7 @@ const onSubmit = async (event) => {
     return(
     <>   
     {/* Cart Heading */}
-    <h1 className='headingCart text-blue-500 flex flex-wrap justify-center items-center gap-2'><Link to={'/'}><ArrowLeftOutlined className='arrow mr-10 p-2 bg-gray-100 text-3xl text-blue-500 rounded-full hover:text-gray-100 hover:bg-blue-600 transition-all'></ArrowLeftOutlined></Link> <span className='text-black'>Shopping</span> Cart <img className='headingCartIcon w-14' src={'https://cdn-icons-gif.flaticon.com/15713/15713014.gif'} alt="image"/></h1>
+    <h1 className='headingCart text-blue-500 flex flex-wrap justify-center items-center gap-2'><Link to={'/'}><ArrowLeftOutlined className='arrow mr-10 p-2 bg-gray-100 text-3xl text-blue-500 rounded-full hover:text-gray-100 hover:bg-blue-600 transition-all'></ArrowLeftOutlined></Link> <span className='text-black'>Shopping</span> Cart <img className='headingCartIcon w-12' src={'https://cdn-icons-gif.flaticon.com/15713/15713014.gif'} alt="image"/></h1>
     
     {/* Total amount & quantity ⬇ */}
       <div className='cartDetailsDiv flex flex-wrap justify-center gap-10 mb-14'>
