@@ -32,7 +32,7 @@ const {cartItems} = useContext(CartContext)
     return(
      <>
   {/* Navbar Start */}
-  <nav className="navbar bg-blue-600 flex items-center flex-wrap justify-between px-8 py-3 border-b border-gray-200">
+  <nav className="navbar bg-blue-600 flex items-center flex-wrap justify-between px-6 py-3 border-b border-gray-200">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store <ShopOutlined></ShopOutlined></span></Link>
         </div>
@@ -56,7 +56,7 @@ const {cartItems} = useContext(CartContext)
         </button>
    
         {/* Main Div ⬇*/}
-        <div className={`p-2 w-full lg:flex lg:items-center lg:w-auto transition-transform duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} lg:max-h-none lg:opacity-100`}>
+        <div className={`navIconPadding p-2 w-full lg:flex lg:items-center lg:w-auto transition-transform duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} lg:max-h-none lg:opacity-100`}>
           <div className="navInputs flex flex-col lg:flex-row lg:items-center lg:justify-end gap-5 text-sm lg:flex-grow">
             <input
               className="font-semibold p-2 w-64 rounded-md focus:outline-none focus:drop-shadow-lg placeholder:text-gray-500"

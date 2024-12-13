@@ -307,6 +307,14 @@ option{
   }
 }
 @media(max-width:430px){
+  .navbar{
+    padding-left: 3% !important;
+    padding-right: 0% !important;
+    padding-top: 2% !important;
+  }
+  .navIconPadding{
+   padding: 1% !important;
+  }
   .nav-heading{
     font-size: 20px !important;
   }
@@ -342,7 +350,7 @@ option{
   } */
   .card{
     margin-bottom: 8%;
-    height: 73.5vh;
+    /* height: 73.5vh; */
     width: 350px;
   }
   .detailContainer{
@@ -376,6 +384,11 @@ option{
 @media(max-width:370px){
   .card{
     width: 325px;
+  }
+}
+@media(max-width:300px){
+  .nav-heading{
+    font-size: 15px !important;
   }
 }
 /* Responsiveness End */
