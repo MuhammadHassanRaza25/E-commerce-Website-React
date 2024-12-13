@@ -296,6 +296,24 @@ option{
     margin-top: 5%;
     margin-bottom: 4%;
   }
+  .heading{
+    font-size: 28px;
+    margin-top: 15%;
+ }
+ .headingCart{
+  font-size: 28px;
+  margin-top: 15%;
+  margin-bottom: 10%;
+ }
+ .headingIcon{
+   width: 40px !important;
+ }
+ .headingCartIcon{
+  width:40px !important
+ }
+ .arrow{
+  font-size: 23px !important;
+  }
   .loginForm{
     width: 90vw;
   }
@@ -308,12 +326,12 @@ option{
 }
 @media(max-width:430px){
   .navbar{
-    padding-left: 3% !important;
-    padding-right: 0% !important;
-    padding-top: 2% !important;
+    padding-left: 5% !important;
+    padding-right: 1% !important;
+    padding-top: 2.5% !important;
   }
   .navIconPadding{
-   padding: 1% !important;
+   padding: 1.3% !important;
   }
   .nav-heading{
     font-size: 20px !important;
@@ -338,19 +356,19 @@ option{
     margin-top: 15%;
  }
  .headingCart{
-   font-size: 28px;
+   font-size: 23px;
    margin-top: 15%;
    margin-bottom: 10%;
   }
+  .headingCartIcon{
+    width:30px !important
+   }
   .arrow{
-    margin-right: 0% !important;
+    margin-right: 10px !important;
+    font-size: 18px !important;
   }
-  /* .cartImg{
-    width: 40px !important;
-  } */
   .card{
     margin-bottom: 8%;
-    /* height: 73.5vh; */
     width: 350px;
   }
   .detailContainer{

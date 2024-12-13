@@ -136,7 +136,7 @@ function AllProducts() {
          {/* Slider End */}
 
           {/* heading */}
-          <h1 className='heading text-blue-500 flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='w-14' src={'https://cdn.dribbble.com/users/656025/screenshots/2782309/tienda.gif'} alt="image" /></h1>
+          <h1 className='heading text-blue-500 flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='headingIcon w-14' src={'https://cdn.dribbble.com/users/656025/screenshots/2782309/tienda.gif'} alt="image" /></h1>
           
           {/* Cards Start */}
           <div className='flex flex-wrap justify-evenly mb-32 mt-3'>
