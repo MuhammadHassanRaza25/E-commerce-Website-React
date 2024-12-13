@@ -32,7 +32,7 @@ const {cartItems} = useContext(CartContext)
     return(
      <>
   {/* Navbar Start */}
-  <nav className="navbar bg-blue-600 flex items-center flex-wrap justify-between px-5 py-3 border border-b-gray-400">
+  <nav className="navbar bg-blue-600 flex items-center flex-wrap justify-between px-8 py-3 border-b border-gray-200">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Link to={"/"}><span className="nav-heading font-bold text-2xl tracking-tight">Hassan Online Store <ShopOutlined></ShopOutlined></span></Link>
         </div>

@@ -104,7 +104,7 @@ function AllProducts() {
       <>
 
       {loading ? (
-          <div className="bg-[#ededed] w-full h-screen fixed top-0 left-0 flex justify-center items-center">
+          <div className="bg-white w-full h-screen fixed top-0 left-0 flex justify-center items-center">
             <div className="loader">&nbsp;</div>
          </div>
       )
@@ -136,7 +136,7 @@ function AllProducts() {
          {/* Slider End */}
 
           {/* heading */}
-          <h1 className='heading flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='w-14' src={'https://cdn.dribbble.com/users/656025/screenshots/2782309/tienda.gif'} alt="image" /></h1>
+          <h1 className='heading text-blue-500 flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='w-14' src={'https://cdn.dribbble.com/users/656025/screenshots/2782309/tienda.gif'} alt="image" /></h1>
           
           {/* Cards Start */}
           <div className='flex flex-wrap justify-evenly mb-32 mt-3'>

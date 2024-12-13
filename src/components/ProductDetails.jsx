@@ -306,19 +306,19 @@ const onSubmit = async (event) => {
                 <span className="title-font font-medium text-xl mr-4 text-gray-900">
                   <span className="text-green-500">$</span> {product.price}
                 </span>
-                <button onClick={showModal} className="detailCartbtn text-white font-medium py-2 px-7">
+                <button onClick={showModal} className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7">
                    Buy Now
                 </button>
 
                 {/* add to cart button */}
                 {user?.isLogin
                 ?
-                <button className="detailCartbtn text-white font-medium py-2 px-7"
+                <button className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
                 onClick={()=> {addCartItem(product), message.success('Added to Cart Successfully')}}>
                 {isItemAdded(id)? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
                </button>
                :
-               <button className="detailCartbtn text-white font-medium py-2 px-7"
+               <button className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
                onClick={()=> message.error('Please Login')}>
                  Add to Cart
               </button>

@@ -47,18 +47,18 @@ const {user, setUser} = useContext(AuthContext);
         </div>
         <div className="mt-5 flex gap-5">
            <Link to={`/products/${props.id}`} className="LINK">
-              <button className="btn w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Product</button>
+              <button className="btn bg-blue-600 hover:bg-blue-400 w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">View Product</button>
            </Link>
 
            {/* add to cart button */}
            {user?.isLogin 
             ?
-            <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
+            <button className="btn bg-blue-600 hover:bg-blue-400 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
             onClick={()=> {addCartItem(props.data) , message.success('Added to Cart Successfully')} }>
             {isItemAdded(props.id)? `Added ${isItemAdded(props.id).added}` : 'Add to Cart'}
            </button>
             :
-            <button className="btn text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
+            <button className="btn bg-blue-600 hover:bg-blue-400 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
             onClick={()=> message.error('Please Login')}>
               Add to Cart
            </button>

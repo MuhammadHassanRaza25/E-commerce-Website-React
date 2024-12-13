@@ -35,12 +35,11 @@
 .transitionBtn{
   transition: all 0.3s;
 }
-/* .navbar{ */
-  /* background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%); */
-  /* position: sticky; */
-  /* top: 0; */
-  /* z-index: 99999; */
-/* } */
+/* .navbar{
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+}  */
 .nav-heading{
   color: whitesmoke;
 }
@@ -63,7 +62,6 @@ option{
    margin-top: 8%;
 }
 .headingCart{
-  color: #00d2ff;
   font-weight: bold;
   text-align: center;
   font-size: 35px;
@@ -115,16 +113,10 @@ option{
 }
 .btn{
   width: 50%;
-  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
-  /* background-color: #2535e8; */
+  /* background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%); */
   transition: all 0.5s;
 }
 .btn:hover{
-  box-shadow: 0px 0px 4px #3a47d5;
-  /* background-color: #00d2ff; */
-  /* border: 1px solid #2535e8;
-  color: #2535e8;
-  background-color: white; */
   transition: all 0.5s;
 }
 .LINK{
@@ -155,11 +147,9 @@ option{
 }
 .detailCartbtn{
   border-radius: 7px;
-  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
   transition: all 0.5s;
 }
 .detailCartbtn:hover{
-  box-shadow: 0px 0px 4px #3a47d5;
   transition: all 0.5s;
 }
 /* Cart Details Styling End */
@@ -198,11 +188,9 @@ option{
 }
 .loginSignupBtn{
   width: 100%;
-  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
   transition: all 0.5s;
 }
 .loginSignupBtn:hover{
-  box-shadow: 0px 0px 4px #3a47d5;
   transition: all 0.5s;
 }
 /* Login/Signup Form Styling End */
