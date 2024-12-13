@@ -120,11 +120,11 @@ const onSubmit = async (event) => {
              {user?.isLogin 
               ?
              <div className="flex justify-center">
-                <button type="submit" className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+                <button type="submit" className="detailCartbtn bg-blue-600 hover:bg-blue-400 text-white font-medium text-base py-2 px-7">Checkout <ShoppingFilled></ShoppingFilled></button>
               </div>
                :
               <div className="flex justify-center">
-                <button onClick={()=> message.error('Please Login')} className="detailCartbtn text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
+                <button onClick={()=> message.error('Please Login')} className="detailCartbtn bg-blue-600 hover:bg-blue-400 text-white font-medium text-base py-2 px-7">Checkout <ShoppingFilled></ShoppingFilled></button>
               </div>
             }
 
