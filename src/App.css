@@ -385,6 +385,8 @@ option{
     margin-top: 4%;
     display: flex;
     justify-content: center;
+    align-items: center !important;
+    gap: 5px;
   }
   .detailBtnPriceDiv{
     display: flex;
