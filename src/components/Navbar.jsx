@@ -112,12 +112,10 @@ const {cartItems} = useContext(CartContext)
              ?
              <>
              <div className="btnOrAvatarDiv flex items-center">
-              <Link to={"/Login"}>
                <button 
                className="bg-white ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
                onClick={logoutUser}
                >Logout</button>
-              </Link>
               <Avatar 
               src={user?.userInfo?.photoUrl} 
               style={{ backgroundColor: 'orange', cursor: 'pointer' }} 

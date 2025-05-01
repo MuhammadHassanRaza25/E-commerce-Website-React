@@ -137,7 +137,7 @@ const onSubmit = async (event) => {
      return(
       <>
         <section>
-        <div className="w-full max-w-7xl md:px-5 lg-6 mx-auto">        
+        <div className="w-full max-w-6xl md:px-5 lg-6 mx-auto">        
           <div className="cartDiv rounded-3xl border-2 border-gray-200 hover:border-cyan-400 p-4 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 ">
             <div className="col-span-12 lg:col-span-2">
               <img

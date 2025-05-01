@@ -79,7 +79,7 @@ function AdminAllOrders(){
 
     return(
         <>
-        {/* Modal Start */}
+        {/* Admin  Modal Start */}
          <Modal centered title="Admin Login" open={isModalOpen}    
           onCancel={() => setIsModalOpen(false)}
           footer={null}>
@@ -93,7 +93,7 @@ function AdminAllOrders(){
              </div>
            </div>
         </Modal>
-        {/* Modal End */}
+        {/* Admin Modal End */}
 
       {/* Admin Panel Work Start */}
          <div className="adminPanel bg-slate-600"> {/* Full body conatiner div */}
@@ -128,7 +128,7 @@ function AdminAllOrders(){
             {/* Admin Panel Start */}
              <div className="adminDash flex">
                 <div className="adminContainer2 flex flex-col pt-24 bg-white justify-start items-start w-96 h-[88vh]">
-                  <Link to={'/admindashboard26'} className="w-full"><h1 className="adminHeading mb-10 pl-8 text-blue-800 bg-gray-50 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl"><BarChartOutlined className="text-2xl"/> Admin Dashboard</h1></Link>
+                  <Link to={'/admindashboard'} className="w-full"><h1 className="adminHeading mb-10 pl-8 text-blue-800 bg-gray-50 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl"><BarChartOutlined className="text-2xl"/> Admin Dashboard</h1></Link>
                   <Link to={'/AdminAllProducts'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 hover:border-blue-50 hover:text-blue-700 flex items-center gap-4 focus:bg-blue-50 focus:text-blue-800 border-r-4 border-white focus:border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><ShoppingOutlined className="text-2xl"/> All Products</button></Link>
                   <Link to={'/AdminAllOrders'} className="w-full"><button className="adminBtn pl-8 hover:bg-blue-50 flex items-center gap-4 bg-blue-50 text-blue-800 border-r-4 border-blue-700 px-3 py-2 w-full font-bold text-start text-xl mb-6"><TruckOutlined className="text-2xl"/> All Orders</button></Link>
                 </div>
