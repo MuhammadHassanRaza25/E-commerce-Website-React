@@ -181,7 +181,7 @@ function ProductDetails() {
       </div>
 
       {/* Product Details Start */}
-      <section className="text-gray-600 body-font overflow-hidden lg:mt-24 mt-5 lg:mb-24 mb-10">
+      <section className="text-gray-600 body-font overflow-hidden lg:mt-20 mt-5 lg:mb-24 mb-10">
         <div className="detailContainer container bg-white dark:bg-gray-900 flex items-center lg:p-0 p-6 mx-auto">
           <div className="lg:w-4/5 mx-auto flex justify-evenly flex-wrap items-center">
             <img

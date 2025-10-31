@@ -10,43 +10,16 @@ import { data } from 'autoprefixer'
 
 // slider image style
 const sliderImg = {
-  height: '60vh',
+  height: '70vh',
   width: '100vw'
 };
 
 function AllProducts() {
-  // const [category, setCategory] = useState([])
-  // const fetchProducts = ()=>{
-  //     fetch('https://dummyjson.com/products')
-  //     .then((res) => res.json())
-  //     .then((data) =>{
-  //       setProducts(data.products)   // set products to array.
-  //       const allCategory = data.products.map((all) => all.category);  //get category
-  //               const filteredCategory = [...new Set(allCategory)];   // filter category
-  //               setCategory(filteredCategory);  // set category to array.
-  //     })
-  //     .catch((err)=> console.log('Error=>', err))
-  //  }   
-
-  //checking data
-  // {products.map((value)=>{
-  //   console.log(value);
-  // })
-  // }
-
-  // call api function //
-  // useEffect(()=>{
-  //   setLoading(false)
-  //   fetchProducts()
-  // },[])
-
-
   const [products, setProducts] = useState([])  //isme db se data get kia h.
   const [selectedCategory, setSelectedCategory] = useState("")
   const [searchProducts, setSeachProducts] = useState("")
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true)
-
 
   // get Real-time product data from firestore collection
   useEffect(() => {
@@ -124,12 +97,12 @@ function AllProducts() {
             {/* Navbar End */}
 
             {/* Slider Start */}
-            <Carousel autoplay>
+            <Carousel autoplay className="border-none">
               <div>
                 <img
                   className='sliderImage'
                   style={sliderImg}
-                  src="https://muhammadhassanraza25.github.io/Hassan-Raza-Store/images/img2.jpg"
+                  src="/bannerimg1.jpg"
                   alt="image"
                 />
               </div>
@@ -137,7 +110,7 @@ function AllProducts() {
                 <img
                   className='sliderImage'
                   style={sliderImg}
-                  src="https://static.vecteezy.com/system/resources/previews/004/858/011/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg"
+                  src="/bannerimg2.jpg"
                   alt="image"
                 />
               </div>

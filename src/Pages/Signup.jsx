@@ -102,7 +102,7 @@ function Signup(){
 
              <div className="flex justify-center">
               <button onClick={signInwithGoogleFunc} className="flex gap-10 items-center justify-center bg-gray-100 w-full text-gray-500 text-lg font-semibold p-2.5 rounded-lg mt-5">
-               <img className="w-8" src={"https://cdn.iconscout.com/icon/free/png-256/free-google-1772223-1507807.png"}/> 
+               <img className="w-8" src="/googlelogo.png" /> 
                Continue With Google
               </button>
             </div>
