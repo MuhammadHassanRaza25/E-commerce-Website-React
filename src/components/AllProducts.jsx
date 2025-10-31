@@ -1,4 +1,4 @@
-import {useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../App.css'
 import Footer from './Footer'
 import Cards from './Cards'
@@ -14,7 +14,7 @@ const sliderImg = {
   width: '100vw'
 };
 
-function AllProducts() { 
+function AllProducts() {
   // const [category, setCategory] = useState([])
   // const fetchProducts = ()=>{
   //     fetch('https://dummyjson.com/products')
@@ -46,123 +46,132 @@ function AllProducts() {
   const [searchProducts, setSeachProducts] = useState("")
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true)
-  
+
 
   // get Real-time product data from firestore collection
   useEffect(() => {
-		const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
-			const productsData = snapshot.docs.map((doc) => ({
-				id: doc.id,
-				...doc.data(),
-			}));
-			setProducts(productsData)  // set products data in useState
+    const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
+      const productsData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProducts(productsData)  // set products data in useState
       // console.log('productsData',productsData);
       setLoading(false)
-		});
+    });
 
-		// Cleanup the listener when the component is unmounted
-		return () => unsubscribe();
-	}, []);
+    // Cleanup the listener when the component is unmounted
+    return () => unsubscribe();
+  }, []);
 
 
   // Products Filter Functionality ⬇ //
   useEffect(() => {
-    let filtered = products;   
+    let filtered = products;
     if (selectedCategory) {
-      filtered = filtered.filter((productData) =>(
+      filtered = filtered.filter((productData) => (
         productData.category === selectedCategory
       ));
     }
     if (searchProducts) {
-      filtered = filtered.filter((productData) =>(
+      filtered = filtered.filter((productData) => (
         productData.title.toLowerCase().includes(searchProducts.toLowerCase())
       ));
     }
     setFilteredProducts(filtered);
   }, [selectedCategory, searchProducts, products]);
-  
+
   //Summary: Simple hamny (filtered varible) main products leliye phir unko filter() karke products ka data lelia.
   // then if ki conditions main ushi (filtered varible) ko update kia or conditions lagayin.
   // at the last setFilteredProducts(filtered); means (filtered varible) ko useState main push krdia. then map lagake cards ka data show krdia.
   // Products Filter Functionality ⬆ //
-  
-  
+
+
   // ⬇ Functions For get values of search input & select.⬇ //
-  const searchProductsFunc = (e)=>{
-     //console.log(e.target.value);  //get search input value.
-     setSeachProducts(e.target.value)
+  const searchProductsFunc = (e) => {
+    //console.log(e.target.value);  //get search input value.
+    setSeachProducts(e.target.value)
   }
-  
-  const selectedCategoryFunc = (e)=>{
+
+  const selectedCategoryFunc = (e) => {
     // console.log(e.target.value);  //get select value.
     setSelectedCategory(e.target.value)
   }
   // ⬆ Functions For get values of search input & select.⬆ //
 
 
-    return (
-      <>
+  return (
+    <>
 
       {loading ? (
-          <div className="bg-white w-full h-screen fixed top-0 left-0 flex justify-center items-center">
-            <div className="loader">&nbsp;</div>
-         </div>
-      )
-      : 
-      (
-        <>
-          {/* Navbar Start */}
-          <Navbar
-          searchProductsFunc={searchProductsFunc}
-          searchProducts={searchProducts}
-          selectedCategoryFunc={selectedCategoryFunc}
-          selectedCategory={selectedCategory}
-          // category={category}
-          />
-          {/* Navbar End */}
-
-          {/* Slider Start */}
-          <Carousel autoplay>
-            <div>
-               <img className='sliderImage'  style={sliderImg} src="https://storage.googleapis.com/macrovector-acl-eu/previews/55609/thumb_55609.webp" alt="image" />
-            </div>
-            <div>
-               <img className='sliderImage'  style={sliderImg} src="https://muhammadhassanraza25.github.io/Hassan-Raza-Store/images/img2.jpg" alt="image" />
-            </div>
-            <div>
-                <img className='sliderImage' style={sliderImg} src="https://t4.ftcdn.net/jpg/03/45/73/61/360_F_345736111_up8XDxSYwaoOfSC88vQTPTpA3QhI3OSn.jpg" alt="image" />
-            </div>
-          </Carousel>
-         {/* Slider End */}
-
-          {/* heading */}
-          <h1 className='heading text-blue-500 flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='headingIcon w-12' src={'https://cdn.dribbble.com/users/656025/screenshots/2782309/tienda.gif'} alt="image" /></h1>
-          
-          {/* Cards Start */}
-          <div className='flex flex-wrap justify-evenly mb-32 mt-3'>
-           {filteredProducts.map((value)=>(
-              <Cards
-              category={value.category}
-              images={value.productImage}
-              description={value.description}
-              price={value.price}
-              title={value.title}
-              id={value.id}
-              rating={value.rating}
-              data={value}
-            />
-          ))} 
+        <div className="bg-white w-full h-screen fixed top-0 left-0 flex justify-center items-center">
+          <div className="loader">&nbsp;</div>
         </div>
-         {/* Cards End */}
-  
-         {/* Footer Start */}
-          <Footer/>
-         {/* Footer End */}
-        </>
-      )}
+      )
+        :
+        (
+          <>
+            {/* Navbar Start */}
+            <div className="sticky top-0 z-50 w-full border-b border-gray-200 bg-blue-600">
+              <Navbar
+                searchProductsFunc={searchProductsFunc}
+                searchProducts={searchProducts}
+                selectedCategoryFunc={selectedCategoryFunc}
+                selectedCategory={selectedCategory}
+              // category={category}
+              />
+            </div>
+            {/* Navbar End */}
 
-      </>
-    )
-  }
-  
-  export default AllProducts;
+            {/* Slider Start */}
+            <Carousel autoplay>
+              <div>
+                <img
+                  className='sliderImage'
+                  style={sliderImg}
+                  src="https://muhammadhassanraza25.github.io/Hassan-Raza-Store/images/img2.jpg"
+                  alt="image"
+                />
+              </div>
+              <div>
+                <img
+                  className='sliderImage'
+                  style={sliderImg}
+                  src="https://static.vecteezy.com/system/resources/previews/004/858/011/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg"
+                  alt="image"
+                />
+              </div>
+            </Carousel>
+            {/* Slider End */}
+
+            {/* product sectionheading */}
+            <h1 className='heading text-blue-500 flex justify-center items-center gap-2'><span className='text-black'>Latest</span> Products <img className='headingIcon w-12' src={'https://cdn.dribbble.com/users/656025/screenshots/2782309/tienda.gif'} alt="image" /></h1>
+
+            {/* Cards Start */}
+            <div className='containerProducts flex flex-wrap justify-evenly mb-32 mt-3'>
+              {filteredProducts.map((value) => (
+                <Cards
+                  category={value.category}
+                  images={value.productImage}
+                  description={value.description}
+                  price={value.price}
+                  title={value.title}
+                  id={value.id}
+                  rating={value.rating}
+                  data={value}
+                />
+              ))}
+            </div>
+            {/* Cards End */}
+
+            <div className="bg-gray-50 border-t border-gray-300 lg:px-3 px-2 dark:bg-gray-900">
+            <Footer />
+            </div>
+          </>
+        )}
+
+    </>
+  )
+}
+
+export default AllProducts;
