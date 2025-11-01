@@ -1,10 +1,19 @@
 ::-webkit-scrollbar{
-  width: 11px;
-  height: 20px;
-  background-color: rgb(246, 246, 246);
+  width: 10px;
+  height: 10px;
+  background-color: rgb(243, 243, 243);
 }
-::-webkit-scrollbar-thumb{
-  background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%);
+::-webkit-scrollbar-track {
+  background: #f3f3f3; /* halka back background */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2563EB; /* Tailwind blue-600 */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8; /* hover pe thoda dark blue */
 }
 
 /* loader */
