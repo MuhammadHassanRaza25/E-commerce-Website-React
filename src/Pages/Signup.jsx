@@ -9,12 +9,15 @@ function Signup(){
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
+  const [loading, setIsLoading] = useState(false);
 
   // signup user
   const signupUser = async ()=>{
+    setIsLoading(true);
     try{
       await createUserWithEmailAndPassword(auth, email, password).then(()=>{
        message.success('Signup Successfully')
+       setIsLoading(false);
        setTimeout(() => {
         navigate('/Login')
        }, 1000);
@@ -22,6 +25,7 @@ function Signup(){
      }
      catch(err){
       console.log(err);
+      setIsLoading(false);
       const errorCode = err.code
       if(errorCode == 'auth/email-already-in-use'){
         message.error('This Email Is Already In Use!')
@@ -95,7 +99,7 @@ function Signup(){
 
             {/* buttons ⬇ */}
              <button className="loginSignupBtn bg-blue-600 hover:bg-blue-400 mt-3 p-3 text-white font-bold text-lg rounded-lg"
-             onClick={signupUser}>Signup</button>
+             onClick={signupUser}>{loading ? <div className="formLoader"></div> : "Signup"}</button>
              <p className="flex justify-center gap-1 mt-3 font-medium text-gray-500">Already have an account? <Link to={"/Login"} className="text-blue-500 hover:underline">Login</Link></p>
             
              <hr className="mt-6 mb-1.5 border" />
