@@ -4,20 +4,20 @@ function Footer() {
     let currentYear = year.getFullYear()
     
   return (
-    <footer className="container bg-gray-50 dark:bg-gray-900">
+    <footer className="container bg-gray-50">
       <div className="mx-auto w-full max-w-screen-2xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <span className="self-center lg:text-2xl text-xl font-bold whitespace-nowrap dark:text-white">
+            <span className="self-center lg:text-2xl text-xl font-bold whitespace-nowrap">
               Hassan Online Store
             </span>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase">
                 Contact Us
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
                   <a href="https://github.com/MuhammadHassanRaza25" target="_blank" className="hover:underline">
                     Github
@@ -31,10 +31,10 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase">
                 Follow us
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
                   <a
                     href="https://github.com/MuhammadHassanRaza25"
@@ -56,10 +56,10 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase">
                 Legal
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Privacy Policy
@@ -74,9 +74,9 @@ function Footer() {
             </div>
           </div>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <span className="text-sm text-gray-500 sm:text-center">
             © {currentYear} {" "}
             <a href="/" className="hover:underline">
               Hassan Online Store
@@ -87,7 +87,7 @@ function Footer() {
             <a
               href="https://github.com/MuhammadHassanRaza25"
               target="_blank"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              className="text-gray-500 hover:text-gray-900 ms-5"
             >
               <svg
                 className="w-4 h-4"

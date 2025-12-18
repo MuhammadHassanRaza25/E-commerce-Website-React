@@ -100,7 +100,7 @@ function Signup(){
             {/* buttons ⬇ */}
              <button className="loginSignupBtn bg-blue-600 hover:bg-blue-400 mt-3 p-3 text-white font-bold text-lg rounded-lg"
              onClick={signupUser}>{loading ? <div className="formLoader"></div> : "Signup"}</button>
-             <p className="flex justify-center gap-1 mt-3 font-medium text-gray-500">Already have an account? <Link to={"/Login"} className="text-blue-500 hover:underline">Login</Link></p>
+             <p className="flex justify-center gap-1 mt-3 font-medium text-gray-500">Already have an account? <Link to={"/login"} className="text-blue-500 hover:underline">Login</Link></p>
             
              <hr className="mt-6 mb-1.5 border" />
 

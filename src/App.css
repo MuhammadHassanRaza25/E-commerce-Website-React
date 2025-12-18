@@ -1,41 +1,62 @@
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: rgb(243, 243, 243);
 }
+
 ::-webkit-scrollbar-track {
-  background: #f3f3f3; /* halka back background */
+  background: #f3f3f3;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2563EB; /* Tailwind blue-600 */
+  background: #2563EB;
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8; /* hover pe thoda dark blue */
+  background: #1d4ed8;
 }
 
 /* loader */
-/* HTML: <div class="loader"></div> */
 .loader {
-  --c:no-repeat linear-gradient(rgb(15, 27, 255) 0 0);
-  background: 
-    var(--c),var(--c),var(--c),
-    var(--c),var(--c),var(--c),
-    var(--c),var(--c),var(--c);
+  --c: no-repeat linear-gradient(rgb(15, 27, 255) 0 0);
+  background:
+    var(--c), var(--c), var(--c),
+    var(--c), var(--c), var(--c),
+    var(--c), var(--c), var(--c);
   background-size: 16px 16px;
-  animation: 
+  animation:
     l32-1 1s infinite,
     l32-2 1s infinite;
 }
+
 @keyframes l32-1 {
-  0%,100% {width:45px;height: 45px}
-  35%,65% {width:65px;height: 65px}
+
+  0%,
+  100% {
+    width: 45px;
+    height: 45px
+  }
+
+  35%,
+  65% {
+    width: 65px;
+    height: 65px
+  }
 }
+
 @keyframes l32-2 {
-  0%,40%  {background-position: 0 0,0 50%, 0 100%,50% 100%,100% 100%,100% 50%,100% 0,50% 0,  50% 50% }
-  60%,100%{background-position: 0 50%, 0 100%,50% 100%,100% 100%,100% 50%,100% 0,50% 0,0 0,  50% 50% }
+
+  0%,
+  40% {
+    background-position: 0 0, 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0, 50% 50%
+  }
+
+  60%,
+  100% {
+    background-position: 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0, 0 0, 50% 50%
+  }
 }
 
 .formLoader {
@@ -44,124 +65,149 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: #ffffff;
-  --_m: 
-    conic-gradient(#0000 10%,#000),
+  --_m:
+    conic-gradient(#0000 10%, #000),
     linear-gradient(#000 0 0) content-box;
   -webkit-mask: var(--_m);
-          mask: var(--_m);
+  mask: var(--_m);
   -webkit-mask-composite: source-out;
-          mask-composite: subtract;
+  mask-composite: subtract;
   animation: l3 1s infinite linear;
 }
-@keyframes l3 {to{transform: rotate(1turn)}}
+
+@keyframes l3 {
+  to {
+    transform: rotate(1turn)
+  }
+}
+
+/* Layout */
 .container {
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
 }
-.containerProducts{
+
+.containerProducts {
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.scrollbar::-webkit-scrollbar{
+.scrollbar::-webkit-scrollbar {
   display: none;
 }
-.transitionBtn{
+
+.transitionBtn {
   transition: all 0.3s;
 }
-.navbar{
+
+.navbar {
   position: sticky;
   top: 0;
   z-index: 99999;
-} 
-.nav-heading{
+}
+
+.nav-heading {
   color: whitesmoke;
 }
 
-input:focus::placeholder{
+input:focus::placeholder {
   color: #3a47d5;
   transition: all 0.5s;
-  padding-left: 3%;
+  padding-left: 2%;
 }
-option{
+
+option {
   color: #3a47d5;
   font-weight: 600;
 }
 
-.heading{
-   color: #00d2ff;
-   font-weight: bold;
-   text-align: center;
-   font-size: 35px;
-   margin-top: 8%;
+.heading {
+  color: #00d2ff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 35px;
+  margin-top: 8%;
 }
-.headingCart{
+
+.headingCart {
   font-weight: bold;
   text-align: center;
   font-size: 35px;
   margin-top: 3%;
   margin-bottom: 5%;
 }
-/* cards styling start */
-.cartDiv{
+
+/* Cards Styling */
+.cartDiv {
   transition: all 0.5s;
 }
-.cartDiv:hover{
+
+.cartDiv:hover {
   border-color: #00d2ff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.5s;
 }
-.card{
+
+.card {
   margin-top: 2%;
   margin-bottom: 2%;
   width: 380px;
   transition: all 0.5s;
 }
-.card:hover{
+
+.card:hover {
   border-color: #00d2ff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.5s;
 }
-.cardTitle{
+
+.cardTitle {
   height: 5vh;
   overflow: scroll;
 }
-.cardTitle::-webkit-scrollbar{
+
+.cardTitle::-webkit-scrollbar {
   display: none;
 }
-.image{
+
+.image {
   display: flex;
   justify-content: center;
 }
-.image img{
+
+.image img {
   width: 100%;
   height: 40vh;
 }
-.desc{
+
+.desc {
   height: 12vh;
   overflow: scroll;
   margin-top: 5%;
 }
-.desc::-webkit-scrollbar{
+
+.desc::-webkit-scrollbar {
   display: none;
 }
-.btn{
+
+.btn {
   width: 50%;
   /* background: linear-gradient(90deg, #3a47d5 0%,#00d2ff 100%); */
   transition: all 0.5s;
 }
-.btn:hover{
+
+.btn:hover {
   transition: all 0.5s;
 }
-.LINK{
+
+.LINK {
   width: 50%;
 }
-/* cards styling end */
 
-/* Cart Details Styling Start */
-.detailContainer{
+/* Card Details Styling */
+.detailContainer {
   border: 1px solid lightgray;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
@@ -170,252 +216,313 @@ option{
   height: 400px;
   overflow: scroll;
 }
-.detailContainer:hover{
+
+.detailContainer:hover {
   border-color: #00d2ff;
 }
-.detailContainer::-webkit-scrollbar{
+
+.detailContainer::-webkit-scrollbar {
   display: none;
 }
-.detailImg{
+
+.detailImg {
   width: 350px !important;
   height: 250px !important;
   /* margin-top: 15%; */
 }
-.detailCartbtn{
+
+.detailCartbtn {
   border-radius: 7px;
   transition: all 0.5s;
 }
-.detailCartbtn:hover{
-  transition: all 0.5s;
-}
-/* Cart Details Styling End */
 
-/* Login/Signup Form Styling Start */
-.loginForm{
+.detailCartbtn:hover {
+  transition: all 0.5s;
+}
+
+/* Login/Signup Form Styling */
+.loginForm {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: white;
   width: 30vw;
   border-radius: 13px;
   border: 1px solid lightgray;
 }
-.signupForm{
+
+.signupForm {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: white;
   width: 30vw;
   border-radius: 13px;
   border: 1px solid lightgray;
 }
-.loginForm:hover{
+
+.loginForm:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.5s;
 }
-.input{
+
+.input {
   border: 1px solid lightgray;
   transition: all 0.5s;
 }
-.input:focus::placeholder{
+
+.input:focus::placeholder {
   color: #3a47d5;
   padding: 0;
 }
-.input:focus{
+
+.input:focus {
   border-color: #3a47d5;
   outline: none;
   box-shadow: 0px 0px 4px #3a47d5;
 }
-.loginSignupBtn{
+
+.loginSignupBtn {
   width: 100%;
   transition: all 0.5s;
 }
-.loginSignupBtn:hover{
+
+.loginSignupBtn:hover {
   transition: all 0.5s;
 }
-/* Login/Signup Form Styling End */
 
 /* Responsiveness Start */
-@media(max-width:1024px){
-  .adminContainer1{
+@media(max-width:1024px) {
+  .adminContainer1 {
     width: 270px !important;
   }
-  .adminHeading{
+
+  .adminHeading {
     font-size: 13.5px !important;
   }
-  .adminImg{
+
+  .adminImg {
     width: 200px;
   }
-  .adminBtn{
+
+  .adminBtn {
     width: 210px !important;
     font-size: 15px !important;
   }
-  .adminBtnadd{
+
+  .adminBtnadd {
     width: 140px !important;
     font-size: 15px !important;
   }
 }
-@media(max-width:1200px){
-  .detailContainer{
+
+@media(max-width:1200px) {
+  .detailContainer {
     width: 100% !important;
     height: 90vh;
   }
-  .loginForm{
-    width: 70vw;
+
+  .loginForm {
+    width: 50vw;
   }
-  .signupForm{
-    width: 70vw;
+
+  .signupForm {
+    width: 50vw;
   }
 }
-@media(max-width:1024px){
-  .sliderImage{
+
+@media(max-width:1024px) {
+  .sliderImage {
     height: 40vh !important;
   }
-  .detailContainer{
+
+  .detailContainer {
     margin-top: 5%;
     margin-bottom: 1%;
     width: 60% !important;
     height: 100vh !important;
     display: flex !important;
   }
-  .detailImg{
+
+  .detailImg {
     margin-top: 0% !important;
   }
-  .navbar{
+
+  .navbar {
     padding-bottom: 0 !important;
   }
-  .cartIcon{
+
+  .cartIcon {
     text-align: center;
     margin-top: 4%;
     margin-bottom: 2%;
   }
-  .navInputs{
+
+  .navInputs {
     margin-top: 3%;
     margin-bottom: 2.5%;
   }
-  .navInputs input{
+
+  .navInputs input {
     width: 100%;
   }
-  .navInputs select{
+
+  .navInputs select {
     width: 100%;
   }
-  .btnOrAvatarDiv{
+
+  .btnOrAvatarDiv {
     display: flex;
     justify-content: center;
   }
 }
-/* admin panel responsiveness */
-@media(max-width:950px){
-  .adminDash{
+
+/* admin dashboard responsiveness */
+@media(max-width:950px) {
+  .adminDash {
     display: flex !important;
     flex-direction: column !important;
   }
-  .adminContainer1{
+  
+  .adminSidebar{
+    width: 100% !important;
+    padding-right: 5px;
+  }
+
+  .adminContainer1 {
     display: flex !important;
     width: 100% !important;
     height: 62vh !important;
   }
-  .adminContainer2{
+
+  .adminContainer2 {
     display: flex !important;
     width: 100% !important;
     height: 50vh !important;
   }
-  .adminBtn{
+
+  .adminBtn {
     width: 99% !important;
   }
 }
-@media(max-width:600px){
-  .sliderImage{
+
+@media(max-width:600px) {
+  .sliderImage {
     height: 30vh !important;
   }
-  .cartIcon{
+
+  .cartIcon {
     margin-top: 8%;
     margin-bottom: 5%;
   }
-  .navInputs{
+
+  .navInputs {
     margin-top: 5%;
     margin-bottom: 4%;
   }
-  .heading{
+
+  .heading {
     font-size: 28px;
     margin-top: 15%;
- }
- .headingCart{
-  font-size: 28px;
-  margin-top: 15%;
-  margin-bottom: 10%;
- }
- .headingIcon{
-   width: 40px !important;
- }
- .headingCartIcon{
-  width:40px !important
- }
- .arrow{
-  font-size: 23px !important;
   }
-  .loginForm{
+
+  .headingCart {
+    font-size: 28px;
+    margin-top: 15%;
+    margin-bottom: 10%;
+  }
+
+  .headingIcon {
+    width: 40px !important;
+  }
+
+  .headingCartIcon {
+    width: 40px !important
+  }
+
+  .arrow {
+    font-size: 23px !important;
+  }
+
+  .loginForm {
     width: 90vw;
   }
-  .signupForm{
+
+  .signupForm {
     width: 90vw;
   }
-  .detailContainer{
+
+  .detailContainer {
     width: 80% !important;
   }
 }
-@media(max-width:430px){
-  .navbar{
+
+@media(max-width:430px) {
+  .navbar {
     padding-left: 5% !important;
     padding-right: 5% !important;
     padding-top: 3.2% !important;
   }
-  .navIconPadding{
-   padding: 1.3% !important;
+
+  .navIconPadding {
+    padding: 1.3% !important;
   }
-  .nav-heading{
+
+  .nav-heading {
     font-size: 20px !important;
   }
-  .sliderImage{
+
+  .sliderImage {
     height: 19vh !important;
   }
-  .navInputs{
+
+  .navInputs {
     margin-top: 5%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
-  .navInputs input{
+
+  .navInputs input {
     width: 100%;
   }
-  .navInputs select{
+
+  .navInputs select {
     width: 100%;
   }
-  .heading{
+
+  .heading {
     font-size: 28px;
     margin-top: 15%;
- }
- .headingCart{
-   font-size: 23px;
-   margin-top: 15%;
-   margin-bottom: 10%;
   }
-  .headingCartIcon{
-    width:30px !important
-   }
-  .arrow{
+
+  .headingCart {
+    font-size: 23px;
+    margin-top: 15%;
+    margin-bottom: 10%;
+  }
+
+  .headingCartIcon {
+    width: 30px !important
+  }
+
+  .arrow {
     margin-right: 10px !important;
     font-size: 18px !important;
   }
-  .card{
+
+  .card {
     margin-bottom: 8%;
     width: 350px;
   }
-  .detailContainer{
+
+  .detailContainer {
     margin-top: 8%;
     width: 85% !important;
   }
-  .detailImg{
+
+  .detailImg {
     width: 250px !important;
     height: 35vh !important;
   }
-  .detailCartbtn{
+
+  .detailCartbtn {
     font-size: small;
     width: 100% !important;
     margin-top: 4%;
@@ -424,27 +531,33 @@ option{
     align-items: center !important;
     gap: 5px;
   }
-  .detailBtnPriceDiv{
+
+  .detailBtnPriceDiv {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100% !important;
   }
-  .cartDiv{
+
+  .cartDiv {
     width: 80vw !important;
   }
-  .cartDiv h1{
+
+  .cartDiv h1 {
     font-size: 25px !important;
   }
 }
-@media(max-width:370px){
-  .card{
+
+@media(max-width:370px) {
+  .card {
     width: 325px;
   }
 }
-@media(max-width:300px){
-  .nav-heading{
+
+@media(max-width:300px) {
+  .nav-heading {
     font-size: 15px !important;
   }
 }
+
 /* Responsiveness End */

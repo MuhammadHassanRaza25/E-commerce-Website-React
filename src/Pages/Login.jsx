@@ -117,7 +117,7 @@ function Login() {
           </button>
           <p className="flex justify-center gap-1 mt-3 font-medium text-gray-500">
             Don't have an account?{" "}
-            <Link to={"/Signup"} className="text-blue-500 hover:underline">
+            <Link to={"/signup"} className="text-blue-500 hover:underline">
               Signup
             </Link>
           </p>

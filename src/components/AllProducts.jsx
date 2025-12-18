@@ -124,6 +124,7 @@ function AllProducts() {
             <div className='containerProducts flex flex-wrap justify-evenly mb-32 mt-3'>
               {filteredProducts.map((value) => (
                 <Cards
+                  key={value.id}
                   category={value.category}
                   images={value.productImage}
                   description={value.description}
@@ -137,8 +138,8 @@ function AllProducts() {
             </div>
             {/* Cards End */}
 
-            <div className="bg-gray-50 border-t border-gray-300 lg:px-3 px-2 dark:bg-gray-900">
-            <Footer />
+            <div className="bg-gray-50 border-t border-gray-300 lg:px-3 px-2">
+              <Footer />
             </div>
           </>
         )}

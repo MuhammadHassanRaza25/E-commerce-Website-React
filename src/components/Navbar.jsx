@@ -103,7 +103,7 @@ function Navbar({ searchProductsFunc, searchProducts, selectedCategoryFunc, sele
             </div>
 
             {/* cart icon from ant design */}
-            <Link to="/Cart">
+            <Link to="/cart">
               <div className="cartIcon">
                 <Badge count={cartItems.length} className="ml-5 mr-2">
                   <ShoppingCartOutlined className="text-3xl text-white cursor-pointer">
@@ -131,7 +131,7 @@ function Navbar({ searchProductsFunc, searchProducts, selectedCategoryFunc, sele
               :
               <>
                 <div className="btnOrAvatarDiv">
-                  <Link to={"/Login"}>
+                  <Link to={"/login"}>
                     <button className="bg-white ml-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md">Login</button>
                   </Link>
                 </div>
