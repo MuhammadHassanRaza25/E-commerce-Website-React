@@ -128,7 +128,7 @@ export default function AdminLayout({ children, activeMenu }) {
                 <div className="adminSidebar flex flex-col pt-24 bg-white justify-start items-start w-72 h-full">
                     <Link to={"/admin"} className="w-full">
                         <h1
-                            className={`adminHeading mb-10 pl-8 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl ${activeMenu === "dashboard" ? "bg-blue-50 text-blue-800 border-r-4 border-blue-700" : "bg-gray-50 text-blue-800"
+                            className={`adminHeading mb-10 pl-8 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl hover:text-blue-700 hover:bg-blue-50 ${activeMenu === "dashboard" ? "bg-blue-50 text-blue-800 border-r-4 border-blue-700" : "bg-gray-50 text-blue-800"
                                 }`}
                         >
                             <BarChartOutlined className="text-2xl" /> Admin Dashboard
@@ -136,7 +136,7 @@ export default function AdminLayout({ children, activeMenu }) {
                     </Link>
                     <Link to={"/admin/allproducts"} className="w-full">
                         <button
-                            className={`adminBtn pl-8 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl mb-6 ${activeMenu === "products" ? "bg-blue-50 text-blue-800 border-r-4 border-blue-700" : ""
+                            className={`adminBtn pl-8 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl mb-6 hover:text-blue-700 hover:bg-blue-50 ${activeMenu === "products" ? "bg-blue-50 text-blue-800 border-r-4 border-blue-700" : ""
                                 }`}
                         >
                             <ShoppingOutlined className="text-2xl" /> All Products
@@ -144,7 +144,7 @@ export default function AdminLayout({ children, activeMenu }) {
                     </Link>
                     <Link to={"/admin/allorders"} className="w-full">
                         <button
-                            className={`adminBtn pl-8 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl mb-6 ${activeMenu === "orders" ? "bg-blue-50 text-blue-800 border-r-4 border-blue-700" : ""
+                            className={`adminBtn pl-8 flex items-center gap-4 px-3 py-2 w-full font-bold text-start text-xl mb-6 hover:text-blue-700 hover:bg-blue-50 ${activeMenu === "orders" ? "bg-blue-50 text-blue-800 border-r-4 border-blue-700" : ""
                                 }`}
                         >
                             <TruckOutlined className="text-2xl" /> All Orders
