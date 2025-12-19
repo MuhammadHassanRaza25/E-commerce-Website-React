@@ -14,7 +14,7 @@ function Cards(props) {
     // console.log("user",user);
 
     return (
-        <div className="card max-w-sm bg-white border-2 border-gray-200 rounded-xl shadow dark:bg-gray-900 dark:border-gray-700">
+        <div className="card max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-900 dark:border-gray-700">
             <div className="image mb-5">
                 <Image className="rounded-t-xl" src={props.images} alt="product image" />
             </div>

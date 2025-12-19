@@ -158,8 +158,8 @@ option {
 }
 
 .card:hover {
-  border-color: #00d2ff;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-color: #0066ff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px;
   transition: all 0.5s;
 }
 
@@ -209,16 +209,19 @@ option {
 /* Card Details Styling */
 .detailContainer {
   border: 1px solid lightgray;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px; */
   border-radius: 10px;
   /* margin-top: 3%; */
   width: 76% !important;
   height: 400px;
   overflow: scroll;
+  transition: all 0.3s;
 }
 
 .detailContainer:hover {
-  border-color: #00d2ff;
+  border-color: #0066ff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px;
+  transition: all 0.3s;
 }
 
 .detailContainer::-webkit-scrollbar {
