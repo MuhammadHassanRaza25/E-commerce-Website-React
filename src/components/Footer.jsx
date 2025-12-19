@@ -11,25 +11,8 @@ function Footer() {
             <span className="self-center lg:text-2xl text-xl font-bold whitespace-nowrap">
               Hassan Online Store
             </span>
+            <p className="text-base text-gray-500 lg:w-96 md:w-96 w-80 mt-2">Hassan Online Store is your trusted destination for high-quality products at unbeatable prices, making online shopping simple, fast, and reliable.</p>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase">
-                Contact Us
-              </h2>
-              <ul className="text-gray-500 font-medium">
-                <li className="mb-4">
-                  <a href="https://github.com/MuhammadHassanRaza25" target="_blank" className="hover:underline">
-                    Github
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/muhammad-hassan-raza-aab5402b7/" target="_blank" className="hover:underline">
-                    Linkedin
-                  </a>
-                </li>
-              </ul>
-            </div>
             <div>
               <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase">
                 Follow us
@@ -39,44 +22,26 @@ function Footer() {
                   <a
                     href="https://github.com/MuhammadHassanRaza25"
                     target="_blank"
-                    className="hover:underline "
+                    className="hover:text-blue-700"
                   >
                     Github
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/muhammad-hassan-raza-aab5402b7/"
+                    href="https://www.linkedin.com/in/muhammad-hassanraza/"
                     target="_blank"
-                    className="hover:underline"
+                    className="hover:text-blue-700"
                   >
                     Linkedin
                   </a>
                 </li>
               </ul>
             </div>
-            <div>
-              <h2 className="mb-6 text-sm font-bold text-gray-900 uppercase">
-                Legal
-              </h2>
-              <ul className="text-gray-500 font-medium">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Terms &amp; Conditions
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center">
+          <span className="lg:text-sm md:text-sm text-xs text-gray-500 sm:text-center">
             © {currentYear} {" "}
             <a href="/" className="hover:underline">
               Hassan Online Store
