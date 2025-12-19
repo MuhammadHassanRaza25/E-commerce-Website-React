@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router";
 import Navbar from "./Navbar";
-import { CartContext } from '../context/CartContext'
+import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
-import { Image, message, Modal } from 'antd';
+import { Image, message, Modal } from "antd";
 import { ShoppingFilled } from "@ant-design/icons";
 import { AuthContext } from "../context/AuthContext";
 import { doc, getDoc, addDoc, collection } from "firebase/firestore";
@@ -17,11 +17,10 @@ function ProductDetails() {
   //     fetch(`https://dummyjson.com/products/${id}`)
   //     .then(res => res.json())
   //     .then((data)=>{
-  //        setProducts(data)    
+  //        setProducts(data)
   //     })
   //     .catch((err)=> console.log('error==>', err))
   // },[id])
-
 
   // navbar with only login/signup for detail page.
   // const [category, setCategory] = useState([])
@@ -40,41 +39,39 @@ function ProductDetails() {
   //       fetchProducts()
   //     },[])
 
-
   // get user with the help of AuthContext
   const { user, setUser } = useContext(AuthContext);
   // console.log("user",user);
 
   // get product id
-  const { id } = useParams()
-  const [product, setProduct] = useState({})  //get data from db.
-  const [title, setTitle] = useState("")
-  const [category, setCategory] = useState("")
-  const [returnPolicy, setReturnPolicy] = useState("")
-  const [price, setPrice] = useState("")
+  const { id } = useParams();
+  const [product, setProduct] = useState({}); //get data from db.
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [returnPolicy, setReturnPolicy] = useState("");
+  const [price, setPrice] = useState("");
 
-  useEffect(() => {  // ye data shipped products ki collection main add hoga.
-    setTitle(product.title)
-    setCategory(product.category)
-    setPrice(product.price)
-    setReturnPolicy(product.returnPolicy)
-  }, [product])
-
+  useEffect(() => {
+    // ye data shipped products ki collection main add hoga.
+    setTitle(product.title);
+    setCategory(product.category);
+    setPrice(product.price);
+    setReturnPolicy(product.returnPolicy);
+  }, [product]);
 
   // get a single document data from firestore collection
   let getDetailData = async () => {
     const docRef = doc(db, "products", id);
     const docSnap = await getDoc(docRef);
-    setProduct({ id, ...docSnap.data() })   // set single product data with id in useState Object. id isliye sath set ki hai taky button ko addtocart hone ke bad added karsakyn.
-  }
+    setProduct({ id, ...docSnap.data() }); // set single product data with id in useState Object. id isliye sath set ki hai taky button ko addtocart hone ke bad added karsakyn.
+  };
   useEffect(() => {
-    getDetailData()
-  }, [])
+    getDetailData();
+  }, []);
   // console.log('product', product);
 
-
   // cart context se addCartItem function get kia hai.
-  const { addCartItem, isItemAdded } = useContext(CartContext)
+  const { addCartItem, isItemAdded } = useContext(CartContext);
 
   //Modal function Start
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,7 +95,7 @@ function ProductDetails() {
       const data = await response.json();
       if (data.success) {
         event.target.reset();
-        message.success("Order Placed Successfully")
+        message.success("Order Placed Successfully");
         setIsModalOpen(false);
 
         // create a new collection in firestore for shipped products.
@@ -109,69 +106,113 @@ function ProductDetails() {
           returnPolicy: returnPolicy,
           price: price,
         }).then(() => {
-          console.log('Data Added to db')
-        })
-
-      }
-      else {
+          console.log("Data Added to db");
+        });
+      } else {
         console.log("Error", data);
-        message.error("Error")
+        message.error("Error");
       }
-    }
-    catch (error) {
-      console.error('Error submitting form:', error);
-      message.error("Error In Submitting Form")
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      message.error("Error In Submitting Form");
     }
   };
   // form details to email ⬆
 
   return (
     <>
-
       {/* Modal Start */}
-      <Modal centered title="Buy Now" open={isModalOpen}
+      <Modal
+        centered
+        title="Buy Now"
+        open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
-        footer={null}>
+        footer={null}
+      >
         <form onSubmit={onSubmit}>
-
           {/* inputs */}
           <div className="w-full mt-5">
             <div className="flex gap-5">
-              <input name="name" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Name" />
-              <input required name="email" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Email" />
+              <input
+                name="name"
+                className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3"
+                type="text"
+                placeholder="Your Name"
+              />
+              <input
+                required
+                name="email"
+                className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3"
+                type="text"
+                placeholder="Your Email"
+              />
             </div>
             <div className="flex gap-5">
-              <input required name="quantity" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="number" placeholder="Quantity" />
-              <input required name="location" className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3" type="text" placeholder="Your Location" />
+              <input
+                required
+                name="quantity"
+                className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3"
+                type="number"
+                placeholder="Quantity"
+              />
+              <input
+                required
+                name="location"
+                className="mb-4 border-2 font-semibold rounded-lg focus:outline-none placeholder:text-gray-500 w-full p-3"
+                type="text"
+                placeholder="Your Location"
+              />
             </div>
           </div>
 
           {/* product short details in inputs */}
           <div className="mb-3 mt-1 p-1 rounded-lg">
-            <input readOnly type="text" name="Product Image" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
-              value={`Product Image: ${product.productImage}`} />
-            <input readOnly type="text" name="product Title" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
-              value={`Product Title: ${product.title}`} />
-            <input readOnly type="text" name="Product Category" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
-              value={`Product Category: ${product.category}`} />
-            <input readOnly type="text" name="return Policy" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
-              value={`Return Policy: ${product.returnPolicy}`} />
-            <input readOnly type="text" name="price" className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
-              value={`Price: $${product.price}`} />
+            <input
+              readOnly
+              type="text"
+              name="Product Image"
+              className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
+              value={`Product Image: ${product.productImage}`}
+            />
+            <input
+              readOnly
+              type="text"
+              name="product Title"
+              className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
+              value={`Product Title: ${product.title}`}
+            />
+            <input
+              readOnly
+              type="text"
+              name="Product Category"
+              className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
+              value={`Product Category: ${product.category}`}
+            />
+            <input
+              readOnly
+              type="text"
+              name="return Policy"
+              className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
+              value={`Return Policy: ${product.returnPolicy}`}
+            />
+            <input
+              readOnly
+              type="text"
+              name="price"
+              className="w-full focus:outline-none font-semibold text-base p-1 mb-2 border bg-gray-100 rounded-lg"
+              value={`Price: $${product.price}`}
+            />
           </div>
 
           {/* order button */}
-          {user?.isLogin
-            ?
-            <div className="flex justify-center">
-              <button type="submit" className="detailCartbtn bg-blue-600 hover:bg-blue-400 text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
-            </div>
-            :
-            <div className="flex justify-center">
-              <button onClick={() => message.error('Please Login')} className="detailCartbtn bg-blue-600 hover:bg-blue-400 text-white font-medium text-base py-2 px-7">Order <ShoppingFilled></ShoppingFilled></button>
-            </div>
-          }
-
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="detailCartbtn bg-blue-600 hover:bg-blue-400 text-white font-medium text-base py-2 px-7"
+            >
+              Order <ShoppingFilled></ShoppingFilled>
+            </button>
+          </div>
         </form>
       </Modal>
       {/* Modal End */}
@@ -253,10 +294,16 @@ function ProductDetails() {
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
-                  <span className="text-gray-600 dark:text-white  ml-3">{product.rating}</span>
+                  <span className="text-gray-600 dark:text-white  ml-3">
+                    {product.rating}
+                  </span>
                 </span>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                  <a href="https://github.com/MuhammadHassanRaza25" target="_blank" className="text-gray-500 dark:text-white  hover:text-gray-900">
+                  <a
+                    href="https://github.com/MuhammadHassanRaza25"
+                    target="_blank"
+                    className="text-gray-500 dark:text-white  hover:text-gray-900"
+                  >
                     <svg
                       className="w-4 h-4"
                       aria-hidden="true"
@@ -278,10 +325,14 @@ function ProductDetails() {
               </p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
-                  <span className="mr-3 font-medium text-black dark:text-white ">Return Policy: {product.returnPolicy}</span>
+                  <span className="mr-3 font-medium text-black dark:text-white ">
+                    Return Policy: {product.returnPolicy}
+                  </span>
                 </div>
                 <div className="flex ml-6 items-center">
-                  <span className="mr-3 font-medium text-black dark:text-white ">Size</span>
+                  <span className="mr-3 font-medium text-black dark:text-white ">
+                    Size
+                  </span>
                   <div className="relative">
                     <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                       <option>SM</option>
@@ -309,24 +360,43 @@ function ProductDetails() {
                 <span className="title-font font-medium text-xl mr-4 text-gray-900 dark:text-white ">
                   <span className="text-green-500">$</span> {product.price}
                 </span>
-                <button onClick={showModal} className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7">
-                  Buy Now
-                </button>
+                {user?.isLogin ? (
+                  <button
+                    onClick={showModal}
+                    className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
+                  >
+                    Buy Now
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => message.error("Please Login")}
+                    className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
+                  >
+                    Buy Now
+                  </button>
+                )}
 
                 {/* add to cart button */}
-                {user?.isLogin
-                  ?
-                  <button className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
-                    onClick={() => { addCartItem(product), message.success('Added to Cart Successfully') }}>
-                    {isItemAdded(id) ? `Added ${isItemAdded(id).added}` : 'Add to Cart'}
+                {user?.isLogin ? (
+                  <button
+                    className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
+                    onClick={() => {
+                      addCartItem(product),
+                        message.success("Added to Cart Successfully");
+                    }}
+                  >
+                    {isItemAdded(id)
+                      ? `Added ${isItemAdded(id).added}`
+                      : "Add to Cart"}
                   </button>
-                  :
-                  <button className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
-                    onClick={() => message.error('Please Login')}>
+                ) : (
+                  <button
+                    className="detailCartbtn bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-7"
+                    onClick={() => message.error("Please Login")}
+                  >
                     Add to Cart
                   </button>
-                }
-
+                )}
               </div>
             </div>
           </div>
@@ -338,7 +408,7 @@ function ProductDetails() {
         <Footer />
       </div>
     </>
-  )
+  );
 }
 
 export default ProductDetails;
