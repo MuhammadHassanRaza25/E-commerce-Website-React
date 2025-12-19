@@ -334,7 +334,7 @@ function ProductDetails() {
       </section>
       {/* Product Details End */}
 
-      <div className="bg-gray-50 border-t border-gray-300 lg:px-3 px-2 dark:bg-gray-900">
+      <div className="bg-gray-50 border-t border-gray-300 lg:px-3 px-2">
         <Footer />
       </div>
     </>

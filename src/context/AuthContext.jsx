@@ -17,8 +17,8 @@ function AuthContextProvider({children}){
         setUser({isLogin: true, 
           userInfo: {
             name: user?.displayName,
-            photoUrl: user?.photoUrl,
-            email: user?.email    //ye? isliye lagay h ke website crash na ho.
+            photoUrl: user?.photoURL,
+            email: user?.email
         }});
       }
       else{

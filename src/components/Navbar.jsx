@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.jsx";
-import { Avatar, Badge } from "antd";
+import { Avatar, Badge, Dropdown, Menu } from "antd";
 import { signOut } from "firebase/auth/cordova";
 import { auth } from "../utils/firebase";
 import { ShopOutlined, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
@@ -20,18 +20,33 @@ function Navbar({ searchProductsFunc, searchProducts, selectedCategoryFunc, sele
 
   // get user with the help of AuthContext
   const { user, setUser } = useContext(AuthContext);
-  // console.log("user",user);
+  // console.log("user====>", user);
 
   //logout function
   const logoutUser = async () => {
     setIsLoading(true)
     await signOut(auth)
     message.success('Logout Successfully')
-     setIsLoading(false)
+    setIsLoading(false)
   }
 
   //show cart length on badge.
   const { cartItems } = useContext(CartContext)
+
+  // user details
+  const menu = {
+    items: [
+      {
+        key: 'name',
+        label: <span className="font-semibold">Name: <span className="font-normal">{user?.userInfo?.name || "N/A"}</span></span>
+      },
+      {
+        key: 'email',
+        label: <span className="font-semibold">Email: <span className="font-normal">{user?.userInfo?.email || "N/A"}</span></span>
+      }
+    ]
+  };
+
 
   return (
     <>
@@ -121,11 +136,14 @@ function Navbar({ searchProductsFunc, searchProducts, selectedCategoryFunc, sele
                     className="bg-white flex justify-center ml-5 mr-5 text-blue-600 text-md font-semibold p-1.5 w-24 hover:font-bold rounded-md"
                     onClick={logoutUser}
                   >{loading ? <div className="formLoader bg-blue-600"></div> : "Logout"}</button>
-                  <Avatar
-                    src={user?.userInfo?.photoUrl}
-                    style={{ backgroundColor: 'orange', cursor: 'pointer' }}
-                    icon={<UserOutlined />}
-                  />
+                  {/* Avatar Dropdown */}
+                  <Dropdown menu={menu} placement="bottomRight" trigger={['click']}>
+                    <Avatar
+                      src={user?.userInfo?.photoUrl}
+                      icon={<UserOutlined />}
+                      style={{ backgroundColor: 'orange', cursor: 'pointer' }}
+                    />
+                  </Dropdown>
                 </div>
               </>
               :

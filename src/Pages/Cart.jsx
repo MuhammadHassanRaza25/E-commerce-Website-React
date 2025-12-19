@@ -15,7 +15,7 @@ function Cart() {
 
   // cart ke context se cartItems get kiye hain.
   const { cartItems, removeCartItem, addCartItem, minusCartquantity } = useContext(CartContext)
-  console.log("cartItems", cartItems);
+  // console.log("cartItems", cartItems);
 
   //total amount & quantity functionality
   const totalAmount = cartItems.reduce((totalVal, Obj) => totalVal + Obj.quantity * Obj.price, 0)
@@ -70,7 +70,7 @@ function Cart() {
   return (
     <>
       {/* Cart Heading */}
-      <h1 className='headingCart text-blue-500 flex flex-wrap justify-center items-center gap-2'><Link to={'/'}><ArrowLeftOutlined className='arrow mr-10 p-2 bg-gray-100 text-3xl text-blue-500 rounded-full hover:text-gray-100 hover:bg-blue-600 transition-all'></ArrowLeftOutlined></Link> <span className='text-black'>Shopping</span> Cart <img className='headingCartIcon w-12' src={'https://cdn-icons-gif.flaticon.com/15713/15713014.gif'} alt="image" /></h1>
+      <h1 className='headingCart text-blue-500 flex flex-wrap justify-center items-center gap-2 mt-20'><Link to={'/'}><ArrowLeftOutlined className='arrow mr-10 p-2 bg-gray-100 text-3xl text-blue-500 rounded-full hover:text-gray-100 hover:bg-blue-600 transition-all'></ArrowLeftOutlined></Link> <span className='text-black'>Shopping</span> Cart <img className='headingCartIcon w-12' src={'https://cdn-icons-gif.flaticon.com/15713/15713014.gif'} alt="image" /></h1>
 
       {/* Total amount & quantity ⬇ */}
       <div className='cartDetailsDiv flex flex-wrap justify-center gap-10 mb-14'>
@@ -138,7 +138,7 @@ function Cart() {
           <>
             <section>
               <div className="w-full max-w-6xl md:px-5 lg-6 mx-auto">
-                <div className="cartDiv rounded-3xl border-2 border-gray-200 hover:border-cyan-400 p-4 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 ">
+                <div className="cartDiv rounded-3xl border-2 border-gray-200 p-4 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 ">
                   <div className="col-span-12 lg:col-span-2">
                     <img
                       src={data.productImage}
