@@ -92,7 +92,7 @@ export default function AdminDashboardPage() {
             onChange={(e) => setCategory(e.target.value)}
             className="border-2 rounded-lg p-2 w-full focus:outline-none"
           >
-            <option disabled selected>
+            <option value="" disabled>
               Select Category
             </option>
             <option>Electronics</option>

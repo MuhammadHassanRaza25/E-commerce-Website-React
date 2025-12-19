@@ -13,15 +13,18 @@ function AdminAllProducts() {
 
   // is useState main db se data get karke set kia h or map lagaya hai table main.
   const [productsFromDb, setProductsFromDb] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
 
   // get Real-time product data from firestore collection
   useEffect(() => {
+    setIsLoading(true);
     const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
       const productsData = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setProductsFromDb(productsData)  // set products data in useState
+      setIsLoading(false);
     });
 
     // Cleanup the listener when the component is unmounted
@@ -30,8 +33,14 @@ function AdminAllProducts() {
 
 
   // delete product document from firestore
-  let deleteProduct = async (id) => {
-    await deleteDoc(doc(db, "products", id), message.success('Product Deleted Successfully'));
+  const deleteProduct = async (id) => {
+    try {
+      await deleteDoc(doc(db, "products", id));
+      message.success('Product Deleted Successfully');
+    } catch (err) {
+      message.error('Failed to delete product');
+      console.error(err);
+    }
   }
 
 
@@ -52,19 +61,19 @@ function AdminAllProducts() {
                 <h1 className="scrollbar overflow-x-scroll text-center w-full">Delete Product</h1>
               </div>
 
-              {productsFromDb.map((data) => {
-                return (
-                  <>
-                    <div className="flex justify-between bg-white text-black font-bold p-3">
+              {isLoading ? <div className="flex justify-center items-center h-full"><div className="formLoader bg-blue-500 w-12"></div></div>
+                :
+                productsFromDb.map((data) => {
+                  return (
+                    <div key={data.id} className="flex justify-between bg-white text-black font-bold p-3">
                       <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.title}</h1>
                       <h1 className="scrollbar h-10 text-start w-96 pl-5 overflow-scroll">${data.price}</h1>
                       <h1 className="scrollbar h-10 text-center w-full overflow-scroll">{data.category}</h1>
                       <h1 className="scrollbar h-10 text-center w-full overflow-scroll">{data.returnPolicy}</h1>
                       <h1 className="scrollbar h-10 text-center w-full overflow-scroll"><DeleteOutlined onClick={() => deleteProduct(data.id)} className="transitionBtn bg-red-50 text-red-500 hover:text-white hover:bg-red-400 px-3 py-1.5 text-lg rounded-md" /></h1>
                     </div>
-                  </>
-                )
-              })}
+                  )
+                })}
             </div>
           )
             : (
@@ -77,18 +86,18 @@ function AdminAllProducts() {
                   <h1 className="scrollbar overflow-x-scroll text-start w-96">Return Policy</h1>
                 </div>
 
-                {productsFromDb.map((data) => {
-                  return (
-                    <>
-                      <div className="flex justify-between bg-white text-black font-bold p-3">
+                {isLoading ? <div className="flex justify-center items-center h-full"><div className="formLoader bg-blue-500 w-12"></div></div>
+                  :
+                  productsFromDb.map((data) => {
+                    return (
+                      <div key={data.id} className="flex justify-between bg-white text-black font-bold p-3">
                         <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.title}</h1>
                         <h1 className="scrollbar h-10 text-start w-full pl-5 overflow-scroll">${data.price}</h1>
                         <h1 className="scrollbar h-10 text-start w-full overflow-scroll">{data.category}</h1>
                         <h1 className="scrollbar h-10 text-start w-96 overflow-scroll ">{data.returnPolicy}</h1>
                       </div>
-                    </>
-                  )
-                })}
+                    )
+                  })}
               </div>
             )
           }
